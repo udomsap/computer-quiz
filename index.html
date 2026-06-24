@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>แบบทดสอบ ความรู้ด้านคอมพิวเตอร์เบื้องต้น 50 ข้อ</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&family=Kanit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1a2e4a;
+    --navy-light: #243c5e;
+    --blue: #2563eb;
+    --blue-light: #3b82f6;
+    --sky: #e8f0fe;
+    --green: #16a34a;
+    --green-bg: #dcfce7;
+    --green-border: #86efac;
+    --yellow: #ca8a04;
+    --yellow-bg: #fefce8;
+    --yellow-border: #fde047;
+    --red: #dc2626;
+    --gray-50: #f8fafc;
+    --gray-100: #f1f5f9;
+    --gray-200: #e2e8f0;
+    --gray-300: #cbd5e1;
+    --gray-600: #475569;
+    --gray-700: #334155;
+    --gray-800: #1e293b;
+    --white: #ffffff;
+    --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.06);
+    --shadow-lg: 0 4px 24px rgba(0,0,0,0.12);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Sarabun', sans-serif;
+    background: #f0f4f8;
+    color: var(--gray-800);
+    min-height: 100vh;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* ===== HEADER ===== */
+  .page-header {
+    background: linear-gradient(135deg, var(--navy) 0%, #1e4080 50%, #1a3a6e 100%);
+    color: white;
+    padding: 48px 24px 56px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+  .header-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 999px;
+    padding: 6px 20px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    backdrop-filter: blur(4px);
+  }
+  .page-header h1 {
+    font-family: 'Kanit', sans-serif;
+    font-size: clamp(24px, 5vw, 42px);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 12px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  }
+  .page-header p {
+    font-size: 16px;
+    opacity: 0.8;
+    margin-bottom: 6px;
+  }
+  .header-stats {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-top: 32px;
+    flex-wrap: wrap;
+  }
+  .stat-item {
+    text-align: center;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 12px;
+    padding: 12px 24px;
+    min-width: 100px;
+  }
+  .stat-num { font-family: 'Kanit', sans-serif; font-size: 28px; font-weight: 700; line-height: 1; }
+  .stat-label { font-size: 12px; opacity: 0.75; margin-top: 4px; }
+
+  /* ===== CONTAINER ===== */
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 32px 20px 60px;
+  }
+
+  /* ===== CONTROLS ===== */
+  .controls-bar {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+    align-items: center;
+    background: white;
+    padding: 16px 20px;
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 12px;
+    z-index: 100;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 18px;
+    border-radius: 8px;
+    font-family: 'Sarabun', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: all 0.18s ease;
+    white-space: nowrap;
+  }
+  .btn-primary {
+    background: var(--blue);
+    color: white;
+  }
+  .btn-primary:hover { background: #1d4ed8; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(37,99,235,0.35); }
+  .btn-outline {
+    background: white;
+    color: var(--gray-700);
+    border: 1.5px solid var(--gray-200);
+  }
+  .btn-outline:hover { border-color: var(--blue); color: var(--blue); }
+  .btn-green { background: var(--green); color: white; }
+  .btn-green:hover { background: #15803d; transform: translateY(-1px); }
+  .btn-danger { background: white; color: var(--red); border: 1.5px solid #fecaca; }
+  .btn-danger:hover { background: #fef2f2; border-color: var(--red); }
+
+  .score-display {
+    margin-left: auto;
+    font-family: 'Kanit', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--navy);
+    background: var(--sky);
+    padding: 8px 16px;
+    border-radius: 8px;
+  }
+  .score-display span { color: var(--blue); font-size: 20px; }
+
+  /* ===== SECTION HEADER ===== */
+  .section-header {
+    background: linear-gradient(90deg, var(--navy) 0%, var(--navy-light) 100%);
+    color: white;
+    padding: 14px 24px;
+    border-radius: 12px;
+    margin: 32px 0 16px;
+    font-family: 'Kanit', sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 2px 8px rgba(26,46,74,0.25);
+  }
+  .section-header .sec-icon { font-size: 20px; }
+  .section-header .sec-count { margin-left: auto; font-size: 13px; opacity: 0.7; font-weight: 400; }
+
+  /* ===== QUESTION CARD ===== */
+  .q-card {
+    background: white;
+    border-radius: 14px;
+    margin-bottom: 16px;
+    box-shadow: var(--shadow);
+    border: 1.5px solid var(--gray-100);
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+  }
+  .q-card:hover { box-shadow: var(--shadow-lg); }
+  .q-card.answered-correct { border-color: var(--green-border); }
+  .q-card.answered-wrong { border-color: #fca5a5; }
+
+  .q-header {
+    background: var(--navy);
+    padding: 16px 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .q-num {
+    background: rgba(255,255,255,0.15);
+    color: white;
+    font-family: 'Kanit', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 6px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .q-text {
+    color: white;
+    font-size: 15.5px;
+    font-weight: 500;
+    line-height: 1.55;
+    flex: 1;
+  }
+  .q-status {
+    flex-shrink: 0;
+    font-size: 20px;
+    margin-top: 2px;
+  }
+
+  /* ===== CHOICES ===== */
+  .choices { padding: 12px 16px; display: grid; gap: 8px; }
+  .choice {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 11px 14px;
+    border-radius: 9px;
+    border: 1.5px solid var(--gray-200);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    background: var(--gray-50);
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  .choice:hover:not(.disabled) {
+    border-color: var(--blue-light);
+    background: #eff6ff;
+    transform: translateX(2px);
+  }
+  .choice .choice-letter {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    background: var(--gray-200);
+    color: var(--gray-700);
+    font-family: 'Kanit', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.15s;
+  }
+  .choice:hover:not(.disabled) .choice-letter {
+    background: var(--blue);
+    color: white;
+  }
+  .choice .choice-text { flex: 1; }
+
+  /* States */
+  .choice.selected {
+    border-color: var(--blue);
+    background: #eff6ff;
+  }
+  .choice.selected .choice-letter { background: var(--blue); color: white; }
+
+  .choice.correct {
+    border-color: var(--green);
+    background: var(--green-bg);
+  }
+  .choice.correct .choice-letter { background: var(--green); color: white; }
+
+  .choice.wrong {
+    border-color: var(--red);
+    background: #fff1f2;
+  }
+  .choice.wrong .choice-letter { background: var(--red); color: white; }
+
+  .choice.correct-answer {
+    border-color: var(--green);
+    background: var(--green-bg);
+  }
+  .choice.correct-answer .choice-letter { background: var(--green); color: white; }
+
+  .choice.disabled { cursor: default; }
+
+  /* ===== EXPLANATION ===== */
+  .explanation {
+    margin: 0 16px 16px;
+    border-radius: 10px;
+    overflow: hidden;
+    display: none;
+    animation: fadeSlide 0.25s ease;
+  }
+  .explanation.show { display: block; }
+  @keyframes fadeSlide {
+    from { opacity: 0; transform: translateY(-6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .exp-answer {
+    background: var(--yellow-bg);
+    border: 1px solid var(--yellow-border);
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #92400e;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .exp-body {
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-top: none;
+    padding: 12px 16px;
+    font-size: 14px;
+    color: var(--gray-600);
+    line-height: 1.65;
+  }
+  .exp-body strong { color: var(--gray-700); }
+
+  /* ===== ANSWER KEY TABLE ===== */
+  .answer-key-section {
+    margin-top: 40px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+  }
+  .answer-key-header {
+    background: var(--navy);
+    color: white;
+    padding: 18px 24px;
+    font-family: 'Kanit', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .answer-key-grid {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 1px;
+    background: var(--gray-200);
+    border: 1px solid var(--gray-200);
+  }
+  .ak-cell {
+    background: white;
+    text-align: center;
+    padding: 10px 4px;
+    font-size: 13px;
+  }
+  .ak-cell.hdr {
+    background: #e8f0fe;
+    font-weight: 700;
+    font-family: 'Kanit', sans-serif;
+    color: var(--navy);
+    font-size: 12px;
+    padding: 8px 4px;
+  }
+  .ak-cell .ak-no { color: var(--gray-600); font-size: 11px; margin-bottom: 2px; }
+  .ak-cell .ak-ans {
+    font-family: 'Kanit', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--green);
+  }
+  .ak-cell.user-correct .ak-ans { color: var(--green); }
+  .ak-cell.user-wrong .ak-ans { color: var(--red); }
+  .ak-cell.user-correct { background: #f0fdf4; }
+  .ak-cell.user-wrong { background: #fff1f2; }
+
+  /* ===== RESULT MODAL ===== */
+  .result-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 999;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+  }
+  .result-overlay.show { display: flex; }
+  .result-modal {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 480px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    animation: popIn 0.3s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  @keyframes popIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to   { transform: scale(1);   opacity: 1; }
+  }
+  .result-emoji { font-size: 64px; margin-bottom: 16px; }
+  .result-title { font-family: 'Kanit', sans-serif; font-size: 28px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+  .result-score { font-size: 52px; font-family: 'Kanit', sans-serif; font-weight: 800; line-height: 1; margin: 12px 0; }
+  .result-score.excellent { color: var(--green); }
+  .result-score.good { color: var(--blue); }
+  .result-score.fair { color: var(--yellow); }
+  .result-score.poor { color: var(--red); }
+  .result-sub { font-size: 15px; color: var(--gray-600); margin-bottom: 24px; }
+  .result-breakdown {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .rb-item {
+    padding: 14px;
+    border-radius: 10px;
+    font-size: 14px;
+  }
+  .rb-item.correct { background: var(--green-bg); color: #166534; }
+  .rb-item.wrong { background: #fff1f2; color: #991b1b; }
+  .rb-item .rb-num { font-size: 28px; font-weight: 800; font-family: 'Kanit', sans-serif; line-height: 1; }
+
+  /* ===== PROGRESS BAR ===== */
+  .progress-bar-wrap {
+    background: var(--gray-100);
+    border-radius: 999px;
+    height: 6px;
+    margin: 8px 0 0;
+    overflow: hidden;
+    flex: 1;
+  }
+  .progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--blue), var(--blue-light));
+    border-radius: 999px;
+    transition: width 0.4s ease;
+  }
+  .progress-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 20px 0;
+    font-size: 12px;
+    color: var(--gray-600);
+  }
+
+  /* ===== PRINT ===== */
+  @media print {
+    .controls-bar, .result-overlay { display: none !important; }
+    .q-card { break-inside: avoid; }
+    .choice { cursor: default; }
+    body { background: white; }
+    .container { padding: 0; }
+  }
+
+  @media (max-width: 600px) {
+    .header-stats { gap: 12px; }
+    .stat-item { padding: 10px 16px; min-width: 80px; }
+    .answer-key-grid { grid-template-columns: repeat(5, 1fr); }
+    .controls-bar { padding: 12px; gap: 8px; }
+    .score-display { font-size: 13px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="page-header">
+  <div class="header-badge">📋 แบบทดสอบปรนัย 4 ตัวเลือก</div>
+  <h1>ความรู้ด้านคอมพิวเตอร์เบื้องต้น</h1>
+  <p>โปรแกรม Microsoft Word &nbsp;|&nbsp; Microsoft Excel &nbsp;|&nbsp; Microsoft PowerPoint</p>
+  <div class="header-stats">
+    <div class="stat-item">
+      <div class="stat-num">50</div>
+      <div class="stat-label">จำนวนข้อ</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">4</div>
+      <div class="stat-label">ตัวเลือก</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">5</div>
+      <div class="stat-label">หมวดวิชา</div>
+    </div>
+  </div>
+</div>
+
+<!-- RESULT MODAL -->
+<div class="result-overlay" id="resultOverlay">
+  <div class="result-modal">
+    <div class="result-emoji" id="resultEmoji">🎉</div>
+    <div class="result-title">ผลการทำแบบทดสอบ</div>
+    <div class="result-score" id="resultScore">0/50</div>
+    <div class="result-sub" id="resultSub"></div>
+    <div class="result-breakdown">
+      <div class="rb-item correct">
+        <div class="rb-num" id="rbCorrect">0</div>
+        ✅ ตอบถูก
+      </div>
+      <div class="rb-item wrong">
+        <div class="rb-num" id="rbWrong">0</div>
+        ❌ ตอบผิด
+      </div>
+    </div>
+    <div style="display:flex;gap:10px;justify-content:center">
+      <button class="btn btn-outline" onclick="closeResult()">ดูเฉลย</button>
+      <button class="btn btn-primary" onclick="resetAll()">ทำใหม่</button>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <!-- CONTROLS -->
+  <div class="controls-bar">
+    <button class="btn btn-green" onclick="submitAll()">✅ ส่งคำตอบ</button>
+    <button class="btn btn-outline" onclick="showAllAnswers()">🔍 เฉลยทั้งหมด</button>
+    <button class="btn btn-outline" onclick="window.print()">🖨️ พิมพ์</button>
+    <button class="btn btn-danger" onclick="resetAll()">🔄 เริ่มใหม่</button>
+    <div class="score-display" id="scoreDisplay">ตอบแล้ว <span id="answeredCount">0</span>/50</div>
+  </div>
+
+  <!-- PROGRESS -->
+  <div class="progress-info">
+    <span id="progressText">ยังไม่ได้ตอบ</span>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-fill" id="progressFill" style="width:0%"></div>
+    </div>
+    <span id="progressPct">0%</span>
+  </div>
+
+  <div id="questionsContainer"></div>
+
+  <!-- ANSWER KEY -->
+  <div class="answer-key-section" id="answerKeySection">
+    <div class="answer-key-header">📊 ตารางสรุปเฉลยข้อสอบ 50 ข้อ</div>
+    <div class="answer-key-grid" id="answerKeyGrid"></div>
+  </div>
+</div>
+
+<script>
+const questions = [
+  // ส่วนที่ 1: ความรู้พื้นฐานเกี่ยวกับคอมพิวเตอร์
+  {no:1,q:'คำว่า "คอมพิวเตอร์" มีที่มาจากภาษาใด และมีความหมายว่าอะไร?',a:'ภาษาละติน หมายถึง การนับหรือการคำนวณ',b:'ภาษากรีก หมายถึง เครื่องจักรอัจฉริยะ',c:'ภาษาอังกฤษ หมายถึง เครื่องประมวลผล',d:'ภาษาฝรั่งเศส หมายถึง เครื่องคิดเลข',ans:'A',exp:'คำว่า "คอมพิวเตอร์" มาจากภาษาละตินว่า Computare ซึ่งหมายถึง "การนับ" หรือ "การคำนวณ" ตามพจนานุกรมฉบับราชบัณฑิตยสถาน พ.ศ. 2554'},
+  {no:2,q:'บุคคลใดได้รับการยกย่องให้เป็น "บิดาแห่งเครื่องคอมพิวเตอร์"?',a:'Alan Turing',b:'Bill Gates',c:'Charles Babbage',d:'John von Neumann',ans:'C',exp:'ชาร์ล แบบเบจ (Charles Babbage) นักคณิตศาสตร์ชาวอังกฤษ ประดิษฐ์เครื่องวิเคราะห์ (Analytical Engine) ซึ่งหลักการดังกล่าวถูกนำมาพัฒนาสร้างเครื่องคอมพิวเตอร์สมัยใหม่'},
+  {no:3,q:'เครื่องมือในการคำนวณเครื่องแรกที่สร้างในประเทศจีนเมื่อประมาณ 2,000-3,000 ปีมาแล้วคืออะไร?',a:'เครื่องคิดเลข (Calculator)',b:'ลูกคิด (Abacus)',c:'เครื่องวิเคราะห์ (Analytical Engine)',d:'เครื่องนับเลข (Difference Engine)',ans:'B',exp:'ลูกคิด (Abacus) ถือเป็นเครื่องมือในการคำนวณเครื่องแรกที่สร้างขึ้นในประเทศจีน เมื่อประมาณ 2,000-3,000 ปีมาแล้ว'},
+  {no:4,q:'คอมพิวเตอร์ยุคที่ 1 (ก่อนปี ค.ศ. 1952) ใช้อุปกรณ์ใดในการควบคุมการทำงาน?',a:'ทรานซิสเตอร์ (Transistor)',b:'วงจรรวม (Integrated Circuit)',c:'หลอดสูญญากาศ (Vacuum Tube)',d:'ไมโครชิป (Microchip)',ans:'C',exp:'คอมพิวเตอร์ยุคที่ 1 ใช้หลอดสูญญากาศในการควบคุมการทำงานของเครื่อง ซึ่งมีขนาดใหญ่มากและราคาแพง'},
+  {no:5,q:'คอมพิวเตอร์ยุคที่ 3 (ค.ศ. 1958-1969) มีนวัตกรรมสำคัญใด?',a:'การใช้หลอดสูญญากาศ',b:'การคิดค้นวงจรรวม (Integrated Circuit: IC)',c:'การประดิษฐ์ทรานซิสเตอร์',d:'การพัฒนาไมโครโพรเซสเซอร์',ans:'B',exp:'คอมพิวเตอร์ยุคที่ 3 มีการคิดค้นวงจรรวม (IC) ซึ่งทำให้ส่วนประกอบและวงจรต่างๆ สามารถวางลงได้บนชิป (Chip) แผ่นเล็กๆ'},
+  {no:6,q:'ในยุคที่ 4 (ค.ศ. 1970-2004) มีสิ่งใดถือกำเนิดขึ้นเป็นครั้งแรก?',a:'การใช้หลอดสูญญากาศ',b:'คอมพิวเตอร์ส่วนบุคคล (Personal Computer)',c:'การคิดค้นวงจรรวม IC',d:'การใช้ทรานซิสเตอร์แทนหลอดสูญญากาศ',ans:'B',exp:'คอมพิวเตอร์ยุคที่ 4 มีการนำ VLSI มาใช้ ทำให้เครื่องเล็กลง ราคาถูกลง และคอมพิวเตอร์ส่วนบุคคล (Personal Computer) ถือกำเนิดขึ้นในยุคนี้'},
+  {no:7,q:'ระบบเลขฐานใดที่คอมพิวเตอร์ใช้ในการประมวลผลภายในเครื่อง?',a:'เลขฐานสิบ (Decimal)',b:'เลขฐานแปด (Octal)',c:'เลขฐานสิบหก (Hexadecimal)',d:'เลขฐานสอง (Binary)',ans:'D',exp:'คอมพิวเตอร์ใช้เลขฐานสองในการประมวลผลภายในเครื่อง เพราะวงจรอิเล็กทรอนิกส์ทำงาน 2 สภาวะ คือ เปิด (ON=1) และปิด (OFF=0)'},
+  {no:8,q:'คอมพิวเตอร์ประเภทใดที่เรียกว่าพีซี (Personal Computer: PC)?',a:'มินิคอมพิวเตอร์',b:'เมนเฟรมคอมพิวเตอร์',c:'ไมโครคอมพิวเตอร์',d:'ซูเปอร์คอมพิวเตอร์',ans:'C',exp:'ไมโครคอมพิวเตอร์ (Microcomputer) หรือที่เรียกว่า พีซี (Personal Computer: PC) เป็นคอมพิวเตอร์ขนาดเล็ก ใช้ไมโครโปรเซสเซอร์เป็น CPU'},
+  {no:9,q:'ซูเปอร์คอมพิวเตอร์เหมาะกับงานประเภทใดมากที่สุด?',a:'งานพิมพ์เอกสารทั่วไป',b:'งานพยากรณ์อากาศและการคำนวณที่ซับซ้อน',c:'งานบัญชีธุรกิจขนาดเล็ก',d:'งานนำเสนอสไลด์',ans:'B',exp:'ซูเปอร์คอมพิวเตอร์เหมาะกับงานคำนวณที่ต้องการความเร็วสูง เช่น งานพยากรณ์อากาศ งานควบคุมขีปนาวุธ และงานด้านวิทยาศาสตร์'},
+  {no:10,q:'เมนเฟรมคอมพิวเตอร์มีลักษณะเด่นข้อใด?',a:'ราคาถูก พกพาสะดวก',b:'ขนาดใหญ่ ราคาแพง ต้องการห้องควบคุมอุณหภูมิ',c:'ใช้ไมโครโปรเซสเซอร์ธรรมดา',d:'เหมาะสำหรับใช้งานส่วนตัว',ans:'B',exp:'เมนเฟรมคอมพิวเตอร์เป็นเครื่องขนาดใหญ่ ราคาสูงมาก ต้องอยู่ในห้องที่ควบคุมอุณหภูมิ ใช้เป็นศูนย์คอมพิวเตอร์หลักขององค์กรขนาดใหญ่'},
+  {no:11,q:'ไมโครโพรเซสเซอร์ (Microprocessor) ทำหน้าที่อะไร?',a:'เก็บข้อมูลถาวร',b:'แสดงผลลัพธ์บนหน้าจอ',c:'คิดคำนวณ เปรียบเทียบ และจัดการทางตรรกะ',d:'รับข้อมูลจากแป้นพิมพ์',ans:'C',exp:'ไมโครโพรเซสเซอร์ (CPU) ทำหน้าที่คิดคำนวณ บวกลบคูณหาร เปรียบเทียบ ดำเนินการทางตรรกะ และสั่งการเคลื่อนย้ายข้อมูล'},
+  {no:12,q:'เลขฐานสิบหก (Hexadecimal) ใช้ตัวเลขและตัวอักษรใดบ้าง?',a:'0-7 เท่านั้น',b:'0-9 และ A-F',c:'0-9 เท่านั้น',d:'0 และ 1 เท่านั้น',ans:'B',exp:'เลขฐานสิบหก ประกอบด้วยตัวเลข 0-9 และตัวอักษร A, B, C, D, E, F โดย A=10, B=11, C=12, D=13, E=14, F=15'},
+  {no:13,q:'สถานีงานวิศวกรรม (Engineering Workstation) เหมาะสำหรับผู้ใช้กลุ่มใด?',a:'นักเรียนระดับประถมศึกษา',b:'วิศวกร สถาปนิก นักวิทยาศาสตร์',c:'ผู้ใช้ทั่วไปที่ทำงานเอกสาร',d:'เจ้าหน้าที่ฝ่ายบัญชี',ans:'B',exp:'สถานีงานวิศวกรรมมีจุดเด่นด้านกราฟิก การสร้างภาพและภาพเคลื่อนไหว เหมาะสำหรับวิศวกร สถาปนิก และนักวิทยาศาสตร์'},
+  {no:14,q:'มินิคอมพิวเตอร์ (Minicomputer) มีลักษณะการทำงานอย่างไร?',a:'ใช้งานได้คนเดียวเท่านั้น',b:'สามารถใช้งานพร้อมกันได้หลายคน (Multi-user)',c:'เป็นคอมพิวเตอร์พกพาขนาดเล็ก',d:'ใช้เฉพาะงานพยากรณ์อากาศ',ans:'B',exp:'มินิคอมพิวเตอร์สามารถใช้งานพร้อมกันได้หลายคน (Multi-user) มีบทบาทเป็น Server ให้บริการข้อมูลและคำนวณแก่ Client'},
+  {no:15,q:'"บิต" (Bit) ในระบบคอมพิวเตอร์หมายความว่าอะไร?',a:'หน่วยความจำขนาด 8 บิต',b:'เลขฐานสองจำนวนหนึ่งหลัก มีค่าเป็น 0 หรือ 1',c:'หน่วยวัดความเร็วของซีพียู',d:'ชนิดของซอฟต์แวร์',ans:'B',exp:'บิต (Bit) ย่อมาจาก Binary Digit คือเลขฐานสองหนึ่งหลัก มีค่าเป็น 0 หรือ 1 เป็นหน่วยย่อยที่สุดในระบบคอมพิวเตอร์'},
+  // ส่วนที่ 2: การใช้งานออนไลน์และ Microsoft Office
+  {no:16,q:'Microsoft 365 ประกอบด้วยแอปพลิเคชันหลักใด?',a:'Word, Excel, PowerPoint, Outlook, Teams',b:'Photoshop, Illustrator, InDesign',c:'Chrome, Firefox, Safari',d:'Android, iOS, Windows',ans:'A',exp:'Microsoft 365 ประกอบด้วยแอปพลิเคชันหลายตัว ได้แก่ Word, Excel, PowerPoint, Outlook, Teams, OneDrive, OneNote และอื่นๆ'},
+  {no:17,q:'Microsoft Excel ใช้สำหรับงานประเภทใด?',a:'งานนำเสนอสไลด์',b:'งานตารางคำนวณและวิเคราะห์ข้อมูล',c:'งานพิมพ์จดหมาย',d:'งานออกแบบกราฟิก',ans:'B',exp:'Microsoft Excel ใช้สำหรับงานตารางคำนวณ (Spreadsheet) การวิเคราะห์ข้อมูล การสร้างกราฟ และการประมวลผลตัวเลข'},
+  {no:18,q:'Microsoft PowerPoint ใช้สำหรับงานประเภทใด?',a:'งานพิมพ์รายงาน',b:'งานคำนวณตัวเลข',c:'งานนำเสนอ (Presentation)',d:'งานฐานข้อมูล',ans:'C',exp:'Microsoft PowerPoint ใช้สำหรับสร้างงานนำเสนอ (Presentation) สไลด์เพื่อประกอบการบรรยาย การประชุม หรือการสอน'},
+  {no:19,q:'ริบบอน (Ribbon) ใน Microsoft Office คืออะไร?',a:'แถบแสดงสถานะของเอกสาร',b:'ศูนย์รวมคำสั่งทั้งหมดของโปรแกรม',c:'พื้นที่ทำงานหลัก',d:'แถบนำทางเอกสาร',ans:'B',exp:'Ribbon (ริบบอน) คือศูนย์รวมคำสั่งทั้งหมดของ Office เพื่อใช้ในการสั่งงาน แสดงเป็นแถบแท็บที่มีกลุ่มคำสั่งต่างๆ'},
+  {no:20,q:'Work Area ในโปรแกรม Microsoft Office หมายถึงอะไร?',a:'แถบเครื่องมือด้านบน',b:'บริเวณที่ใช้แสดงหรือใส่ข้อมูล',c:'แถบสถานะด้านล่าง',d:'เมนูไฟล์',ans:'B',exp:'Work Area เป็นบริเวณที่ใช้แสดงหรือใส่ข้อมูล ไม่ว่าจะเป็น Excel, Word หรือ PowerPoint ก็มีส่วนนี้ทั้งหมด'},
+  // ส่วนที่ 3: Microsoft Word
+  {no:21,q:'แท็บ FILE ใน Microsoft Word 2013 มีหน้าที่อะไร?',a:'แสดงรูปแบบตัวอักษร',b:'ศูนย์รวมการสั่งงานพื้นฐาน เช่น บันทึก พิมพ์ เปิดไฟล์',c:'แทรกรูปภาพลงในเอกสาร',d:'ตรวจสอบการสะกดคำ',ans:'B',exp:'แท็บ FILE เป็นศูนย์รวมการสั่งงานพื้นฐาน เช่น บันทึกไฟล์ พิมพ์เอกสาร เปิดไฟล์ เมื่อคลิกจะเปิดหน้าต่าง Backstage ขึ้นมา'},
+  {no:22,q:'ไอคอน File New ใน Microsoft Word ใช้ทำอะไร?',a:'เปิดเอกสารที่มีอยู่แล้ว',b:'บันทึกเอกสารปัจจุบัน',c:'สร้างเอกสารใหม่',d:'พิมพ์เอกสาร',ans:'C',exp:'ไอคอน File New ใช้สำหรับสร้างเอกสารใหม่ว่างเปล่า พร้อมให้เริ่มพิมพ์หรือแก้ไขได้ทันที'},
+  {no:23,q:'ไอคอน Edit Cut ใน Microsoft Word ทำงานอย่างไร?',a:'คัดลอกส่วนที่เลือก',b:'ตัดส่วนที่ทำแถบสีและวางไว้บนคลิปบอร์ด',c:'วางข้อมูลจากคลิปบอร์ด',d:'ลบข้อความถาวร',ans:'B',exp:'Edit Cut ใช้ตัดส่วนที่ทำแถบสีและวางไว้บนคลิปบอร์ด ต่างจาก Copy ที่คัดลอกโดยไม่ลบต้นฉบับ'},
+  {no:24,q:'Navigation Pane ใน Microsoft Word ใช้ทำอะไร?',a:'แสดงข้อมูลเกี่ยวกับไฟล์ที่เปิดอยู่',b:'ใช้นำทางไปตามส่วนต่างๆ ของไฟล์',c:'แสดงรูปภาพในเอกสาร',d:'ตรวจสอบไวยากรณ์',ans:'B',exp:'Navigation Pane (แถบนำทาง) ใช้นำทางไปตามส่วนต่างๆ ของไฟล์ที่เปิดใช้งานอยู่ ช่วยให้เคลื่อนที่ในเอกสารขนาดใหญ่ได้สะดวก'},
+  {no:25,q:'Status Bar (แถบสถานะ) ใน Microsoft Word แสดงข้อมูลอะไร?',a:'รายชื่อผู้ใช้ที่ลงชื่อเข้าใช้',b:'ข้อมูลเกี่ยวกับไฟล์ที่เปิดอยู่ เช่น จำนวนหน้า จำนวนคำ',c:'คำสั่งที่ใช้บ่อยที่สุด',d:'รูปแบบตัวอักษรปัจจุบัน',ans:'B',exp:'Status Bar (แถบสถานะ) แสดงข้อมูลเกี่ยวกับไฟล์ที่เปิดอยู่ เช่น จำนวนหน้า จำนวนคำ และโหมดการแสดงผล'},
+  {no:26,q:'Word 2013 สามารถเปิดและแก้ไขไฟล์ PDF ได้หรือไม่?',a:'ไม่ได้เลย ต้องใช้โปรแกรมอื่น',b:'ได้ สามารถเปิดเอกสาร PDF และแก้ไขใน Word ได้',c:'ได้ แต่แก้ไขไม่ได้',d:'ได้เฉพาะ PDF ขนาดเล็กเท่านั้น',ans:'B',exp:'Word 2013 มีความสามารถใหม่คือเปิดเอกสาร PDF และแก้ไขใน Word ได้โดยตรง ซึ่งเป็นฟีเจอร์ใหม่ที่เพิ่มเข้ามา'},
+  {no:27,q:'ฟีเจอร์ใดใน Word 2013 ที่ช่วยให้นำเสนอเอกสารผ่านออนไลน์ได้?',a:'Mail Merge',b:'Present Online (นำเสนอเอกสาร Word 2013 แบบออนไลน์)',c:'Track Changes',d:'AutoCorrect',ans:'B',exp:'Word 2013 มีความสามารถนำเสนอเอกสารบนออนไลน์ได้ทันที ผู้รับที่ไม่มี Word 2013 ก็ยังสามารถดูได้'},
+  {no:28,q:'ไอคอน Edit Copy ใน Microsoft Word ทำงานอย่างไร?',a:'ตัดส่วนที่เลือกและวางไว้บนคลิปบอร์ด',b:'คัดลอกส่วนที่ทำแถบสีโดยต้นฉบับยังคงอยู่',c:'วางข้อมูลจากคลิปบอร์ด',d:'ย้ายข้อความไปยังตำแหน่งใหม่',ans:'B',exp:'Edit Copy คัดลอกส่วนที่ทำแถบสีไว้ โดยต้นฉบับยังคงอยู่ ข้อมูลจะถูกเก็บไว้บนคลิปบอร์ดเพื่อนำไปวาง'},
+  {no:29,q:'Backstage Commands ใน Word 2013 อยู่ที่ส่วนใดของหน้าต่าง Backstage?',a:'ส่วนขวา',b:'ส่วนบน',c:'ส่วนซ้าย',d:'ส่วนล่าง',ans:'C',exp:'เมื่อเปิดหน้าต่าง Backstage จะแบ่งเป็น 2 ส่วน ส่วนซ้ายที่เล็กกว่าเรียกว่า Backstage Commands ส่วนขวาจะเปลี่ยนตามคำสั่ง'},
+  {no:30,q:'ฟีเจอร์ Read Mode ใน Word 2013 มีประโยชน์อย่างไร?',a:'ช่วยให้พิมพ์เอกสารได้เร็วขึ้น',b:'ทำให้อ่านเอกสารสะดวกเสมือนอ่านหนังสือจริง',c:'แปลงเอกสารเป็นภาษาอื่น',d:'ตรวจสอบไวยากรณ์อัตโนมัติ',ans:'B',exp:'Word 2013 เพิ่ม Read Mode ที่ทำให้อ่านเอกสารได้สะดวกเสมือนอ่านหนังสือจริง เพิ่มประสิทธิภาพการอ่านบนหน้าจอ'},
+  {no:31,q:'แท็บใดใน Ribbon ของ Word 2013 ใช้แทรกรูปภาพหรือวัตถุ?',a:'Home',b:'Insert',c:'Page Layout',d:'Review',ans:'B',exp:'แท็บ Insert ใน Ribbon ของ Word 2013 ใช้สำหรับแทรกรูปภาพ ตาราง วัตถุ และองค์ประกอบต่างๆ ลงในเอกสาร'},
+  {no:32,q:'คีย์ลัดใดใช้บันทึกไฟล์ใน Microsoft Word?',a:'Ctrl+P',b:'Ctrl+O',c:'Ctrl+S',d:'Ctrl+N',ans:'C',exp:'Ctrl+S เป็นคีย์ลัดสำหรับบันทึกไฟล์ (Save) ใน Microsoft Word และโปรแกรม Office อื่นๆ'},
+  {no:33,q:'พื้นที่ทำงาน (Work Area) ใน Word 2013 เปรียบเสมือนอะไร?',a:'กระดาษเปล่าที่พิมพ์ข้อความและใส่รูปภาพได้',b:'แผ่นฟิล์มสำหรับถ่ายรูป',c:'กระดานดำสำหรับเขียน',d:'หน้าจอโทรทัศน์',ans:'A',exp:'พื้นที่ทำงาน (Work Area) ใน Word 2013 เปรียบเสมือนกระดาษเปล่าที่สามารถพิมพ์ข้อความและใส่รูปภาพลงไปได้'},
+  {no:34,q:'แท็บใดใน Ribbon ของ Word ใช้กำหนดรูปแบบหน้ากระดาษ?',a:'Home',b:'Insert',c:'Page Layout',d:'View',ans:'C',exp:'แท็บ Page Layout ใน Ribbon ของ Word ใช้กำหนดรูปแบบหน้ากระดาษ เช่น ขอบกระดาษ การวางแนว และขนาดกระดาษ'},
+  {no:35,q:'ไอคอน File Save ใน Microsoft Word ใช้ทำอะไร?',a:'สร้างเอกสารใหม่',b:'เปิดเอกสารเก่า',c:'บันทึกเอกสารปัจจุบัน',d:'พิมพ์เอกสาร',ans:'C',exp:'ไอคอน File Save ใช้บันทึกเอกสารที่กำลังทำงานอยู่ในปัจจุบัน เพื่อป้องกันการสูญหายของข้อมูล'},
+  // ส่วนที่ 4: Microsoft Excel
+  {no:36,q:'ใน Microsoft Excel เซลล์ (Cell) คืออะไร?',a:'แถวของข้อมูลในตาราง',b:'คอลัมน์ของข้อมูลในตาราง',c:'ช่องสี่เหลี่ยมที่เกิดจากการตัดกันของแถวและคอลัมน์',d:'แผ่นงานทั้งหมด',ans:'C',exp:'เซลล์ (Cell) คือช่องสี่เหลี่ยมที่เกิดจากการตัดกันของแถว (Row) และคอลัมน์ (Column) เป็นหน่วยพื้นฐานในการเก็บข้อมูล'},
+  {no:37,q:'ฟังก์ชัน SUM ใน Microsoft Excel ใช้ทำอะไร?',a:'หาค่าเฉลี่ย',b:'นับจำนวนเซลล์',c:'รวมผลบวกของตัวเลขในช่วงที่กำหนด',d:'หาค่าสูงสุด',ans:'C',exp:'ฟังก์ชัน SUM ใช้รวมผลบวกของตัวเลขในช่วงเซลล์ เช่น =SUM(A1:A10) รวมค่าจากเซลล์ A1 ถึง A10'},
+  {no:38,q:'ใน Excel เซลล์ที่อยู่แถวที่ 3 คอลัมน์ B เรียกว่าอะไร?',a:'3B',b:'B3',c:'B-3',d:'Row3Col2',ans:'B',exp:'ใน Excel การอ้างอิงเซลล์ใช้ชื่อคอลัมน์ (ตัวอักษร) ก่อน แล้วตามด้วยหมายเลขแถว ดังนั้นแถว 3 คอลัมน์ B จึงเรียก B3'},
+  {no:39,q:'ฟังก์ชัน AVERAGE ใน Excel ใช้ทำอะไร?',a:'รวมผลบวก',b:'หาค่าเฉลี่ยของตัวเลขในช่วงที่กำหนด',c:'หาค่าต่ำสุด',d:'นับจำนวนเซลล์',ans:'B',exp:'ฟังก์ชัน AVERAGE ใช้หาค่าเฉลี่ยของตัวเลขในช่วงเซลล์ เช่น =AVERAGE(A1:A10) คำนวณค่าเฉลี่ยจาก A1 ถึง A10'},
+  {no:40,q:'ใน Excel Sheet (ชีต) หมายถึงอะไร?',a:'แถวเดียวในตาราง',b:'แผ่นงานที่มีตารางข้อมูล',c:'เซลล์เดียว',d:'ไฟล์ Excel ทั้งหมด',ans:'B',exp:'Sheet (ชีต) หรือแผ่นงาน คือพื้นที่ทำงานในรูปแบบตาราง ไฟล์ Excel หนึ่งไฟล์สามารถมีได้หลาย Sheet'},
+  {no:41,q:'แผนภูมิ (Chart) ใน Microsoft Excel สร้างขึ้นเพื่ออะไร?',a:'จัดรูปแบบตัวอักษร',b:'แสดงข้อมูลในรูปแบบกราฟิกเพื่อเปรียบเทียบและวิเคราะห์',c:'พิมพ์เอกสาร',d:'ตั้งค่าหน้ากระดาษ',ans:'B',exp:'แผนภูมิ (Chart) ใช้แสดงข้อมูลในรูปแบบกราฟิก เพื่อให้เห็นภาพรวม เปรียบเทียบ และวิเคราะห์ข้อมูลได้ง่ายขึ้น'},
+  {no:42,q:'ฟังก์ชัน MAX ใน Excel ใช้ทำอะไร?',a:'หาค่าเฉลี่ย',b:'หาค่าสูงสุดของตัวเลขในช่วงที่กำหนด',c:'นับจำนวนเซลล์',d:'รวมผลบวก',ans:'B',exp:'ฟังก์ชัน MAX ใช้หาค่าสูงสุดของตัวเลขในช่วงเซลล์ เช่น =MAX(A1:A10) หาค่าสูงสุดจาก A1 ถึง A10'},
+  {no:43,q:'สูตรใน Excel ต้องเริ่มต้นด้วยอักขระใด?',a:'# (ชาร์ป)',b:'@ (แอท)',c:'= (เท่ากับ)',d:'$ (ดอลลาร์)',ans:'C',exp:'สูตร (Formula) ใน Excel ต้องเริ่มต้นด้วยเครื่องหมาย = (เท่ากับ) เสมอ เช่น =SUM(A1:A5) หรือ =A1+B1'},
+  // ส่วนที่ 5: Microsoft PowerPoint
+  {no:44,q:'ใน Microsoft PowerPoint ไฟล์นำเสนอ 1 ไฟล์เรียกว่าอะไร?',a:'Document',b:'Workbook',c:'Presentation',d:'Project',ans:'C',exp:'ใน Microsoft PowerPoint ไฟล์นำเสนอ 1 ไฟล์เรียกว่า Presentation ซึ่งประกอบด้วยสไลด์ (Slide) หลายหน้า'},
+  {no:45,q:'ใน PowerPoint Slide Layout คืออะไร?',a:'ฟอนต์ที่ใช้ในสไลด์',b:'รูปแบบการจัดวางองค์ประกอบบนสไลด์',c:'สีพื้นหลังสไลด์',d:'เสียงประกอบการนำเสนอ',ans:'B',exp:'Slide Layout คือรูปแบบการจัดวางองค์ประกอบต่างๆ บนสไลด์ เช่น ตำแหน่งหัวข้อ เนื้อหา รูปภาพ ซึ่งมีหลายรูปแบบ'},
+  {no:46,q:'ใน PowerPoint การใช้ Transition หมายถึงอะไร?',a:'การแทรกเสียงในสไลด์',b:'เอฟเฟกต์การเปลี่ยนหน้าสไลด์',c:'การกำหนดฟอนต์',d:'การพิมพ์สไลด์',ans:'B',exp:'Transition คือเอฟเฟกต์ที่เกิดขึ้นเมื่อเปลี่ยนจากสไลด์หนึ่งไปยังอีกสไลด์ เช่น การเลื่อน การซีด การหมุน'},
+  {no:47,q:'Animation ใน PowerPoint ใช้เพื่ออะไร?',a:'เปลี่ยนสีพื้นหลังสไลด์',b:'กำหนดการเคลื่อนไหวของวัตถุหรือข้อความในสไลด์',c:'บันทึกไฟล์นำเสนอ',d:'พิมพ์เอกสารสรุป',ans:'B',exp:'Animation ใน PowerPoint ใช้กำหนดการเคลื่อนไหวของวัตถุหรือข้อความในสไลด์ เช่น การปรากฏขึ้น การหายไป การเลื่อน'},
+  {no:48,q:'Slide Show ใน PowerPoint หมายถึงอะไร?',a:'การพิมพ์สไลด์ทั้งหมด',b:'การแสดงสไลด์แบบเต็มหน้าจอตามลำดับ',c:'การส่งออกไฟล์เป็น PDF',d:'การแก้ไขสไลด์',ans:'B',exp:'Slide Show คือการแสดงสไลด์แบบเต็มหน้าจอตามลำดับ เหมือนกับการนำเสนอจริง สามารถเริ่มจากสไลด์แรกหรือสไลด์ที่เลือก'},
+  {no:49,q:'Theme ใน PowerPoint คืออะไร?',a:'หัวข้อของการนำเสนอ',b:'ชุดรูปแบบที่กำหนดสี ฟอนต์ และเอฟเฟกต์ทั้งหมด',c:'ลำดับขั้นตอนการนำเสนอ',d:'ชื่อไฟล์นำเสนอ',ans:'B',exp:'Theme คือชุดรูปแบบที่กำหนดสี ฟอนต์ และเอฟเฟกต์ทั้งหมดของงานนำเสนอ ทำให้สไลด์ทั้งหมดมีรูปแบบสอดคล้องกัน'},
+  {no:50,q:'Placeholder ใน PowerPoint คืออะไร?',a:'ชื่อไฟล์นำเสนอ',b:'กรอบที่กำหนดตำแหน่งสำหรับใส่เนื้อหา เช่น ข้อความ รูปภาพ บนสไลด์',c:'จำนวนสไลด์ทั้งหมด',d:'ระยะเวลาการนำเสนอ',ans:'B',exp:'Placeholder คือกรอบที่กำหนดตำแหน่งสำหรับใส่เนื้อหาต่างๆ บนสไลด์ มีอยู่ใน Slide Layout ต่างๆ เช่น กรอบหัวข้อ กรอบเนื้อหา'},
+];
+
+const sections = [
+  {title:'ส่วนที่ 1', subtitle:'ความรู้พื้นฐานเกี่ยวกับคอมพิวเตอร์', icon:'💻', range:[1,15]},
+  {title:'ส่วนที่ 2', subtitle:'การใช้งานออนไลน์และ Microsoft Office', icon:'🌐', range:[16,20]},
+  {title:'ส่วนที่ 3', subtitle:'Microsoft Word', icon:'📝', range:[21,35]},
+  {title:'ส่วนที่ 4', subtitle:'Microsoft Excel', icon:'📊', range:[36,43]},
+  {title:'ส่วนที่ 5', subtitle:'Microsoft PowerPoint', icon:'📽️', range:[44,50]},
+];
+
+const userAnswers = {};
+let submitted = false;
+
+function render() {
+  const container = document.getElementById('questionsContainer');
+  container.innerHTML = '';
+
+  sections.forEach(sec => {
+    const secQs = questions.filter(q => q.no >= sec.range[0] && q.no <= sec.range[1]);
+    const hdr = document.createElement('div');
+    hdr.className = 'section-header';
+    hdr.innerHTML = `<span class="sec-icon">${sec.icon}</span><span><strong>${sec.title}:</strong> ${sec.subtitle}</span><span class="sec-count">${secQs.length} ข้อ</span>`;
+    container.appendChild(hdr);
+
+    secQs.forEach(q => container.appendChild(buildCard(q)));
+  });
+
+  buildAnswerKey();
+}
+
+function buildCard(q) {
+  const card = document.createElement('div');
+  card.className = 'q-card';
+  card.id = `card-${q.no}`;
+
+  const userAns = userAnswers[q.no];
+  const isAnswered = !!userAns;
+  const isCorrect = userAns === q.ans;
+
+  if (submitted && isAnswered) {
+    card.classList.add(isCorrect ? 'answered-correct' : 'answered-wrong');
+  }
+
+  const letters = ['A','B','C','D'];
+  const choiceKeys = ['a','b','c','d'];
+
+  const statusIcon = submitted && isAnswered
+    ? (isCorrect ? '✅' : '❌')
+    : (isAnswered ? '🔵' : '');
+
+  card.innerHTML = `
+    <div class="q-header">
+      <span class="q-num">ข้อ ${q.no}</span>
+      <span class="q-text">${q.q}</span>
+      <span class="q-status">${statusIcon}</span>
+    </div>
+    <div class="choices">
+      ${letters.map((L,i) => {
+        let cls = 'choice';
+        if (!submitted) {
+          if (userAnswers[q.no] === L) cls += ' selected';
+        } else {
+          if (L === q.ans) cls += ' correct-answer';
+          else if (userAnswers[q.no] === L && userAnswers[q.no] !== q.ans) cls += ' wrong';
+        }
+        if (submitted) cls += ' disabled';
+        return `<div class="${cls}" onclick="selectAnswer(${q.no},'${L}')">
+          <span class="choice-letter">${L}</span>
+          <span class="choice-text">${q[choiceKeys[i]]}</span>
+        </div>`;
+      }).join('')}
+    </div>
+    <div class="explanation ${submitted ? 'show' : ''}" id="exp-${q.no}">
+      <div class="exp-answer">🎯 เฉลย: ข้อ ${q.ans} — ${q[q.ans.toLowerCase()]}</div>
+      <div class="exp-body">${q.exp}</div>
+    </div>
+  `;
+  return card;
+}
+
+function selectAnswer(qNo, letter) {
+  if (submitted) return;
+  userAnswers[qNo] = letter;
+  updateProgress();
+
+  const card = document.getElementById(`card-${qNo}`);
+  card.querySelectorAll('.choice').forEach((el, i) => {
+    const L = ['A','B','C','D'][i];
+    el.classList.toggle('selected', L === letter);
+  });
+  const statusEl = card.querySelector('.q-status');
+  if (statusEl) statusEl.textContent = '🔵';
+}
+
+function updateProgress() {
+  const total = questions.length;
+  const answered = Object.keys(userAnswers).length;
+  document.getElementById('answeredCount').textContent = answered;
+  const pct = Math.round((answered/total)*100);
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressText').textContent = `ตอบแล้ว ${answered} จาก ${total} ข้อ`;
+  document.getElementById('progressPct').textContent = pct + '%';
+}
+
+function submitAll() {
+  const answered = Object.keys(userAnswers).length;
+  if (answered < questions.length) {
+    if (!confirm(`คุณตอบแล้ว ${answered}/${questions.length} ข้อ ยังมีที่ยังไม่ได้ตอบ ต้องการส่งคำตอบเลยหรือไม่?`)) return;
+  }
+  submitted = true;
+  render();
+  showResult();
+}
+
+function showResult() {
+  let correct = 0;
+  questions.forEach(q => { if (userAnswers[q.no] === q.ans) correct++; });
+  const total = questions.length;
+  const pct = Math.round((correct/total)*100);
+
+  document.getElementById('rbCorrect').textContent = correct;
+  document.getElementById('rbWrong').textContent = Object.keys(userAnswers).length - correct;
+  document.getElementById('resultScore').textContent = `${correct}/${total}`;
+
+  const sc = document.getElementById('resultScore');
+  sc.className = 'result-score';
+  let emoji = '🎉', sub = '', cls = '';
+  if (pct >= 80) { emoji='🏆'; sub='ยอดเยี่ยม! ผ่านเกณฑ์ด้วยคะแนนสูง'; cls='excellent'; }
+  else if (pct >= 60) { emoji='👍'; sub='ผ่านเกณฑ์ ดีมาก!'; cls='good'; }
+  else if (pct >= 40) { emoji='📚'; sub='พอใช้ได้ ควรทบทวนเพิ่มเติม'; cls='fair'; }
+  else { emoji='💪'; sub='ต้องศึกษาเพิ่มเติม ลองทำใหม่อีกครั้ง'; cls='poor'; }
+
+  sc.classList.add(cls);
+  document.getElementById('resultEmoji').textContent = emoji;
+  document.getElementById('resultSub').textContent = `${pct}% — ${sub}`;
+  document.getElementById('resultOverlay').classList.add('show');
+}
+
+function closeResult() {
+  document.getElementById('resultOverlay').classList.remove('show');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function showAllAnswers() {
+  submitted = true;
+  render();
+}
+
+function resetAll() {
+  if (!confirm('ต้องการเริ่มทำแบบทดสอบใหม่ใช่หรือไม่?')) return;
+  Object.keys(userAnswers).forEach(k => delete userAnswers[k]);
+  submitted = false;
+  document.getElementById('resultOverlay').classList.remove('show');
+  render();
+  updateProgress();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function buildAnswerKey() {
+  const grid = document.getElementById('answerKeyGrid');
+  grid.innerHTML = '';
+
+  // Build rows of 10
+  const rows = [];
+  for (let i = 0; i < questions.length; i += 10) {
+    rows.push(questions.slice(i, i + 10));
+  }
+
+  rows.forEach(rowQs => {
+    // Number row
+    rowQs.forEach(q => {
+      const cell = document.createElement('div');
+      cell.className = 'ak-cell';
+      const userAns = userAnswers[q.no];
+      if (submitted && userAns) {
+        cell.classList.add(userAns === q.ans ? 'user-correct' : 'user-wrong');
+      }
+      cell.innerHTML = `<div class="ak-no">ข้อ ${q.no}</div><div class="ak-ans">${q.ans}</div>`;
+      if (submitted && userAns && userAns !== q.ans) {
+        cell.innerHTML += `<div style="font-size:11px;color:#dc2626;margin-top:2px;">ตอบ: ${userAns}</div>`;
+      }
+      grid.appendChild(cell);
+    });
+  });
+}
+
+// Init
+render();
+updateProgress();
+</script>
+</body>
+</html>
