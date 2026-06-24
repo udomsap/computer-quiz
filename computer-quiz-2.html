@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>แบบทดสอบ ความรู้ด้านคอมพิวเตอร์เบื้องต้น 50 ข้อ ชุดที่ 2</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&family=Kanit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:#1a2e4a;--navy2:#243c5e;--blue:#2563eb;--blue2:#3b82f6;
+    --sky:#e8f0fe;--green:#16a34a;--gbg:#dcfce7;--gbdr:#86efac;
+    --yellow:#ca8a04;--ybg:#fefce8;--ybdr:#fde047;--red:#dc2626;
+    --g50:#f8fafc;--g100:#f1f5f9;--g200:#e2e8f0;--g300:#cbd5e1;
+    --g600:#475569;--g700:#334155;--g800:#1e293b;--white:#ffffff;
+    --sh:0 1px 3px rgba(0,0,0,.08),0 4px 16px rgba(0,0,0,.06);
+    --shl:0 4px 24px rgba(0,0,0,.12);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Sarabun',sans-serif;background:#f0f4f8;color:var(--g800);min-height:100vh;font-size:16px;line-height:1.6}
+
+  .page-header{background:linear-gradient(135deg,#1a2e4a 0%,#1e4080 50%,#1a3a6e 100%);color:#fff;padding:48px 24px 56px;text-align:center;position:relative;overflow:hidden}
+  .page-header::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/svg%3E");pointer-events:none}
+  .hbadge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:6px 20px;font-size:13px;font-weight:500;letter-spacing:1px;margin-bottom:20px;backdrop-filter:blur(4px)}
+  .page-header h1{font-family:'Kanit',sans-serif;font-size:clamp(22px,5vw,40px);font-weight:700;line-height:1.2;margin-bottom:12px;text-shadow:0 2px 8px rgba(0,0,0,.2)}
+  .page-header p{font-size:16px;opacity:.8;margin-bottom:6px}
+  .hstats{display:flex;justify-content:center;gap:32px;margin-top:32px;flex-wrap:wrap}
+  .si{text-align:center;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:12px;padding:12px 24px;min-width:100px}
+  .sn{font-family:'Kanit',sans-serif;font-size:28px;font-weight:700;line-height:1}
+  .sl{font-size:12px;opacity:.75;margin-top:4px}
+
+  .container{max-width:900px;margin:0 auto;padding:32px 20px 60px}
+
+  .controls-bar{display:flex;gap:12px;margin-bottom:28px;flex-wrap:wrap;align-items:center;background:#fff;padding:16px 20px;border-radius:14px;box-shadow:var(--sh);position:sticky;top:12px;z-index:100}
+  .btn{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;border-radius:8px;font-family:'Sarabun',sans-serif;font-size:14px;font-weight:600;cursor:pointer;border:none;transition:all .18s ease;white-space:nowrap}
+  .bp{background:var(--blue);color:#fff}.bp:hover{background:#1d4ed8;transform:translateY(-1px);box-shadow:0 4px 12px rgba(37,99,235,.35)}
+  .bo{background:#fff;color:var(--g700);border:1.5px solid var(--g200)}.bo:hover{border-color:var(--blue);color:var(--blue)}
+  .bg{background:var(--green);color:#fff}.bg:hover{background:#15803d;transform:translateY(-1px)}
+  .bd{background:#fff;color:var(--red);border:1.5px solid #fecaca}.bd:hover{background:#fef2f2;border-color:var(--red)}
+  .sdsp{margin-left:auto;font-family:'Kanit',sans-serif;font-size:15px;font-weight:600;color:var(--navy);background:var(--sky);padding:8px 16px;border-radius:8px}
+  .sdsp span{color:var(--blue);font-size:20px}
+
+  .sec-hdr{background:linear-gradient(90deg,var(--navy) 0%,var(--navy2) 100%);color:#fff;padding:14px 24px;border-radius:12px;margin:32px 0 16px;font-family:'Kanit',sans-serif;font-size:17px;font-weight:600;display:flex;align-items:center;gap:10px;box-shadow:0 2px 8px rgba(26,46,74,.25)}
+  .sec-hdr .si2{font-size:20px}
+  .sec-hdr .sc{margin-left:auto;font-size:13px;opacity:.7;font-weight:400}
+
+  .qcard{background:#fff;border-radius:14px;margin-bottom:16px;box-shadow:var(--sh);border:1.5px solid var(--g100);overflow:hidden;transition:box-shadow .2s}
+  .qcard:hover{box-shadow:var(--shl)}
+  .qcard.ac{border-color:var(--gbdr)}.qcard.aw{border-color:#fca5a5}
+  .qhdr{background:var(--navy);padding:16px 20px;display:flex;align-items:flex-start;gap:12px}
+  .qnum{background:rgba(255,255,255,.15);color:#fff;font-family:'Kanit',sans-serif;font-size:13px;font-weight:700;padding:3px 10px;border-radius:6px;white-space:nowrap;flex-shrink:0;margin-top:2px}
+  .qtxt{color:#fff;font-size:15.5px;font-weight:500;line-height:1.55;flex:1}
+  .qst{flex-shrink:0;font-size:20px;margin-top:2px}
+  .choices{padding:12px 16px;display:grid;gap:8px}
+  .choice{display:flex;align-items:flex-start;gap:10px;padding:11px 14px;border-radius:9px;border:1.5px solid var(--g200);cursor:pointer;transition:all .15s ease;background:var(--g50);font-size:15px;line-height:1.5}
+  .choice:hover:not(.disabled){border-color:var(--blue2);background:#eff6ff;transform:translateX(2px)}
+  .choice .cl{width:28px;height:28px;border-radius:6px;background:var(--g200);color:var(--g700);font-family:'Kanit',sans-serif;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .15s}
+  .choice:hover:not(.disabled) .cl{background:var(--blue);color:#fff}
+  .choice .ct{flex:1}
+  .choice.selected{border-color:var(--blue);background:#eff6ff}
+  .choice.selected .cl{background:var(--blue);color:#fff}
+  .choice.correct{border-color:var(--green);background:var(--gbg)}
+  .choice.correct .cl{background:var(--green);color:#fff}
+  .choice.wrong{border-color:var(--red);background:#fff1f2}
+  .choice.wrong .cl{background:var(--red);color:#fff}
+  .choice.correct-answer{border-color:var(--green);background:var(--gbg)}
+  .choice.correct-answer .cl{background:var(--green);color:#fff}
+  .choice.disabled{cursor:default}
+
+  .exp{margin:0 16px 16px;border-radius:10px;overflow:hidden;display:none;animation:fs .25s ease}
+  .exp.show{display:block}
+  @keyframes fs{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+  .exp-ans{background:var(--ybg);border:1px solid var(--ybdr);padding:10px 16px;font-size:14px;font-weight:600;color:#92400e;display:flex;align-items:center;gap:8px}
+  .exp-body{background:var(--g50);border:1px solid var(--g200);border-top:none;padding:12px 16px;font-size:14px;color:var(--g600);line-height:1.65}
+
+  .aks{margin-top:40px;background:#fff;border-radius:16px;box-shadow:var(--shl);overflow:hidden}
+  .akh{background:var(--navy);color:#fff;padding:18px 24px;font-family:'Kanit',sans-serif;font-size:18px;font-weight:700;display:flex;align-items:center;gap:10px}
+  .akg{display:grid;grid-template-columns:repeat(10,1fr);gap:1px;background:var(--g200);border:1px solid var(--g200)}
+  .akc{background:#fff;text-align:center;padding:10px 4px;font-size:13px}
+  .akn{color:var(--g600);font-size:11px;margin-bottom:2px}
+  .aka{font-family:'Kanit',sans-serif;font-weight:700;font-size:15px;color:var(--green)}
+  .akc.uc .aka{color:var(--green)}.akc.uw .aka{color:var(--red)}
+  .akc.uc{background:#f0fdf4}.akc.uw{background:#fff1f2}
+
+  .ro{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:999;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
+  .ro.show{display:flex}
+  .rm{background:#fff;border-radius:20px;padding:40px;max-width:480px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.3);animation:pi .3s cubic-bezier(.34,1.56,.64,1)}
+  @keyframes pi{from{transform:scale(.8);opacity:0}to{transform:scale(1);opacity:1}}
+  .re{font-size:64px;margin-bottom:16px}
+  .rt{font-family:'Kanit',sans-serif;font-size:28px;font-weight:700;color:var(--navy);margin-bottom:8px}
+  .rs{font-size:52px;font-family:'Kanit',sans-serif;font-weight:800;line-height:1;margin:12px 0}
+  .rs.ex{color:var(--green)}.rs.go{color:var(--blue)}.rs.fa{color:var(--yellow)}.rs.po{color:var(--red)}
+  .rsub{font-size:15px;color:var(--g600);margin-bottom:24px}
+  .rbd{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
+  .rbi{padding:14px;border-radius:10px;font-size:14px}
+  .rbi.rc{background:var(--gbg);color:#166534}.rbi.rw{background:#fff1f2;color:#991b1b}
+  .rbi .rn{font-size:28px;font-weight:800;font-family:'Kanit',sans-serif;line-height:1}
+
+  .pbw{background:var(--g100);border-radius:999px;height:6px;margin:8px 0 0;overflow:hidden;flex:1}
+  .pbf{height:100%;background:linear-gradient(90deg,var(--blue),var(--blue2));border-radius:999px;transition:width .4s ease}
+  .pi2{display:flex;align-items:center;gap:12px;padding:8px 20px 0;font-size:12px;color:var(--g600)}
+
+  @media print{.controls-bar,.ro{display:none!important}.qcard{break-inside:avoid}.choice{cursor:default}body{background:#fff}.container{padding:0}}
+  @media(max-width:600px){.hstats{gap:12px}.si{padding:10px 16px;min-width:80px}.akg{grid-template-columns:repeat(5,1fr)}.controls-bar{padding:12px;gap:8px}.sdsp{font-size:13px}}
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="hbadge">📋 แบบทดสอบปรนัย 4 ตัวเลือก — ชุดที่ 2</div>
+  <h1>ความรู้ด้านคอมพิวเตอร์เบื้องต้น</h1>
+  <p>โปรแกรม Microsoft Word &nbsp;|&nbsp; Microsoft Excel &nbsp;|&nbsp; Microsoft PowerPoint</p>
+  <div class="hstats">
+    <div class="si"><div class="sn">50</div><div class="sl">จำนวนข้อ</div></div>
+    <div class="si"><div class="sn">4</div><div class="sl">ตัวเลือก</div></div>
+    <div class="si"><div class="sn">5</div><div class="sl">หมวดวิชา</div></div>
+    <div class="si"><div class="sn">2</div><div class="sl">ชุดที่</div></div>
+  </div>
+</div>
+
+<div class="ro" id="rOverlay">
+  <div class="rm">
+    <div class="re" id="rEmoji">🎉</div>
+    <div class="rt">ผลการทำแบบทดสอบ</div>
+    <div class="rs" id="rScore">0/50</div>
+    <div class="rsub" id="rSub"></div>
+    <div class="rbd">
+      <div class="rbi rc"><div class="rn" id="rbC">0</div>✅ ตอบถูก</div>
+      <div class="rbi rw"><div class="rn" id="rbW">0</div>❌ ตอบผิด</div>
+    </div>
+    <div style="display:flex;gap:10px;justify-content:center">
+      <button class="btn bo" onclick="closeResult()">ดูเฉลย</button>
+      <button class="btn bp" onclick="resetAll()">ทำใหม่</button>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="controls-bar">
+    <button class="btn bg" onclick="submitAll()">✅ ส่งคำตอบ</button>
+    <button class="btn bo" onclick="showAllAnswers()">🔍 เฉลยทั้งหมด</button>
+    <button class="btn bo" onclick="window.print()">🖨️ พิมพ์</button>
+    <button class="btn bd" onclick="resetAll()">🔄 เริ่มใหม่</button>
+    <div class="sdsp">ตอบแล้ว <span id="aCnt">0</span>/50</div>
+  </div>
+  <div class="pi2">
+    <span id="pTxt">ยังไม่ได้ตอบ</span>
+    <div class="pbw"><div class="pbf" id="pFill" style="width:0%"></div></div>
+    <span id="pPct">0%</span>
+  </div>
+  <div id="qContainer"></div>
+  <div class="aks" id="aksSection">
+    <div class="akh">📊 ตารางสรุปเฉลยข้อสอบ 50 ข้อ — ชุดที่ 2</div>
+    <div class="akg" id="akGrid"></div>
+  </div>
+</div>
+
+<script>
+const questions = [
+  // ส่วนที่ 1: ความรู้พื้นฐานคอมพิวเตอร์ (เพิ่มเติม) ข้อ 1-15
+  {no:1,q:'คอมพิวเตอร์ยุคที่ 2 (ค.ศ. 1953-1957) มีลักษณะสำคัญอย่างไร?',a:'ใช้หลอดสูญญากาศในการทำงาน',b:'ใช้ทรานซิสเตอร์แทนหลอดสูญญากาศ ทำให้เครื่องเล็กลงและเร็วขึ้น',c:'ใช้วงจรรวม (IC) เป็นครั้งแรก',d:'ใช้ไมโครโพรเซสเซอร์เป็นหน่วยประมวลผล',ans:'B',exp:'คอมพิวเตอร์ยุคที่ 2 มีการนำทรานซิสเตอร์มาใช้แทนหลอดสูญญากาศ ทำให้เครื่องมีขนาดเล็กลง เพิ่มประสิทธิภาพการทำงาน และยังมีการคิดภาษาเพื่อใช้กับเครื่องคอมพิวเตอร์ด้วย'},
+  {no:2,q:'คอมพิวเตอร์ยุคที่ 5 (ค.ศ. 2005-ปัจจุบัน) มุ่งเน้นพัฒนาด้านใดเป็นหลัก?',a:'การใช้หลอดสูญญากาศที่ดีขึ้น',b:'การสร้างวงจรรวมขนาดใหญ่',c:'ความสามารถในการทำงานของระบบและความสะดวกในการใช้งาน รวมถึงคอมพิวเตอร์แบบพกพา',d:'การพัฒนาทรานซิสเตอร์ขนาดใหญ่',ans:'C',exp:'คอมพิวเตอร์ยุคที่ 5 มุ่งเน้นพัฒนาความสามารถในการทำงานและความสะดวกสบายในการใช้งาน โดยเฉพาะการพัฒนาคอมพิวเตอร์แบบพกพา (Portable Computer) พร้อมซอฟต์แวร์และเทคโนโลยีที่ทันสมัย'},
+  {no:3,q:'Laptop กับ Notebook แตกต่างกันอย่างไร?',a:'Laptop ใช้งานบนตักได้ ส่วน Notebook มีขนาดและน้ำหนักเบากว่า',b:'Laptop ราคาถูกกว่า Notebook เสมอ',c:'Notebook มีหน่วยความจำมากกว่า Laptop เสมอ',d:'ไม่มีความแตกต่างกันเลย',ans:'A',exp:'Laptop ออกแบบมาเพื่อวางใช้งานบนตักได้ หนักประมาณ 3-8 กิโลกรัม ส่วน Notebook มีขนาดและน้ำหนักเบากว่า หนักประมาณ 1.5-3 กิโลกรัม'},
+  {no:4,q:'Palmtop Computer เหมาะกับงานลักษณะใด?',a:'งานออกแบบวิศวกรรมซับซ้อน',b:'งานประมวลผลข้อมูลขนาดใหญ่',c:'งานเฉพาะอย่าง เช่น พจนานุกรม สมุดนัดหมาย และการเก็บข้อมูลเฉพาะ',d:'งานพยากรณ์อากาศ',ans:'C',exp:'Palmtop Computer เป็นไมโครคอมพิวเตอร์สำหรับงานเฉพาะอย่าง เช่น พจนานุกรม สมุดจดบันทึกประจำวัน การนัดหมาย การเก็บข้อมูลเฉพาะอย่าง พกพาสะดวกติดตัวไปได้ง่าย'},
+  {no:5,q:'Desktop Computer มีลักษณะเด่นข้อใด?',a:'พกพาสะดวก น้ำหนักเบา',b:'ออกแบบมาให้ตั้งบนโต๊ะ มีการแยกชิ้นส่วนประกอบที่ชัดเจน',c:'ใช้แบตเตอรี่เป็นแหล่งพลังงาน',d:'เหมาะสำหรับงานกราฟิกเท่านั้น',ans:'B',exp:'Desktop Computer หรือคอมพิวเตอร์แบบตั้งโต๊ะ ออกแบบมาให้ตั้งบนโต๊ะ (Fixed Location) มีการแยกชิ้นส่วนประกอบที่ชัดเจน เช่น จอภาพ ซีพียู และแป้นพิมพ์'},
+  {no:6,q:'ซูเปอร์คอมพิวเตอร์ใช้เทคนิคการคำนวณพิเศษแบบใด?',a:'Sequential Processing',b:'Single Core Processing',c:'Massively Parallel Processing (MPP) การคำนวณหลายตัวพร้อมกัน',d:'Batch Processing',ans:'C',exp:'ซูเปอร์คอมพิวเตอร์ทำงานได้เร็วเพราะใช้โครงสร้างการคำนวณพิเศษ คือ MPP (Massively Parallel Processing) ซึ่งเป็นการคำนวณข้อมูลหลายๆ ตัวในเวลาเดียวกัน'},
+  {no:7,q:'ในระบบคอมพิวเตอร์ เลขฐานแปด (Octal) ใช้ตัวเลขอะไรบ้าง?',a:'0-9',b:'0-7',c:'0-15',d:'0-1',ans:'B',exp:'เลขฐานแปด (Octal) ประกอบด้วยตัวเลข 8 ตัว คือ 0, 1, 2, 3, 4, 5, 6, และ 7 เท่านั้น'},
+  {no:8,q:'เหตุใดมนุษย์จึงใช้เลขฐาน 10 ในชีวิตประจำวัน?',a:'เพราะสมองมนุษย์ทำงานด้วยสัญญาณไฟฟ้า',b:'เพราะมนุษย์มีนิ้วมือ 10 นิ้วจึงนำมาใช้เป็นเครื่องมือช่วยนับ',c:'เพราะระบบคอมพิวเตอร์กำหนดให้ใช้',d:'เพราะเลขฐาน 10 คำนวณได้เร็วที่สุด',ans:'B',exp:'เหตุผลที่มนุษย์ใช้เลขฐาน 10 อาจเป็นเพราะมนุษย์เรามีนิ้วมืออยู่ 10 นิ้ว จึงนำมาใช้เป็นเครื่องมือช่วยในการนับเลขหรือการคำนวณในชีวิตประจำวัน'},
+  {no:9,q:'ไมโครชิป (Microchip) คืออะไร?',a:'ประเภทของหลอดสูญญากาศ',b:'วงจรรวมที่มีทรานซิสเตอร์จำนวนมากบรรจุอยู่บนชิ้นซิลิกอนเล็กๆ',c:'ชนิดของทรานซิสเตอร์รุ่นเก่า',d:'อุปกรณ์แสดงผลของคอมพิวเตอร์',ans:'B',exp:'ไมโครชิปคือวงจรรวมที่มีทรานซิสเตอร์จำนวนหลายแสนตัวบรรจุอยู่บนชิ้นซิลิกอนเล็กๆ ทำให้คอมพิวเตอร์มีขนาดเล็กลง'},
+  {no:10,q:'CPU ย่อมาจากอะไร?',a:'Computer Processing Unit',b:'Central Power Unit',c:'Central Processing Unit',d:'Computer Power Utility',ans:'C',exp:'CPU ย่อมาจาก Central Processing Unit หรือ หน่วยประมวลผลกลาง ทำหน้าที่เป็นสมองของคอมพิวเตอร์ในการคิดคำนวณและประมวลผล'},
+  {no:11,q:'ปัจจุบันเมนเฟรมคอมพิวเตอร์ได้รับความนิยมลดลงเพราะเหตุใด?',a:'เมนเฟรมมีราคาถูกเกินไป',b:'คอมพิวเตอร์ขนาดเล็กมีประสิทธิภาพสูงขึ้นและระบบเครือข่ายพัฒนาดีขึ้น',c:'ไม่มีผู้ผลิตเมนเฟรมอีกต่อไป',d:'เมนเฟรมไม่สามารถเชื่อมต่ออินเทอร์เน็ตได้',ans:'B',exp:'เมนเฟรมได้รับความนิยมน้อยลงเพราะคอมพิวเตอร์ขนาดเล็กมีประสิทธิภาพและความสามารถดีขึ้น ราคาถูกลง และระบบเครือข่ายคอมพิวเตอร์ก็พัฒนาดีขึ้นจนทำงานได้เหมือนการใช้งานบนเมนเฟรม'},
+  {no:12,q:'มินิคอมพิวเตอร์เหมาะสำหรับงานประเภทใดบ้าง?',a:'งานส่วนตัวเล็กๆ ทั่วไป',b:'งานบัญชีและการเงิน งานออกแบบวิศวกรรม งานควบคุมการผลิต',c:'งานบันเทิงส่วนตัว',d:'งานพยากรณ์อากาศระดับชาติ',ans:'B',exp:'มินิคอมพิวเตอร์ใช้สำหรับประมวลผลในงานสารสนเทศขององค์การขนาดกลางถึงใหญ่ เช่น งานบัญชีและการเงิน งานออกแบบทางวิศวกรรม และงานควบคุมการผลิตในโรงงาน'},
+  {no:13,q:'สถานีงานวิศวกรรมส่วนใหญ่ใช้ระบบปฏิบัติการใด?',a:'Windows',b:'Android',c:'Unix',d:'iOS',ans:'C',exp:'สถานีงานวิศวกรรมส่วนใหญ่ใช้ระบบปฏิบัติการยูนิกซ์ (Unix) ซึ่งเหมาะกับงานวิศวกรรมที่ต้องการประสิทธิภาพสูง'},
+  {no:14,q:'ไมโครคอมพิวเตอร์สามารถทำงานในรูปแบบใดบ้าง?',a:'ทำงานแบบส่วนบุคคล (Standalone) หรือเป็นเครื่องลูกข่าย (Terminal) ในระบบเครือข่าย',b:'ทำงานเป็น Server หลักขององค์กรขนาดใหญ่เท่านั้น',c:'ทำงานได้เฉพาะงานกราฟิก',d:'ทำงานได้เฉพาะแบบออฟไลน์เท่านั้น',ans:'A',exp:'ไมโครคอมพิวเตอร์สามารถทำงานได้ทั้งแบบส่วนบุคคล (Standalone) และเป็นเครื่องลูกข่าย (Terminal) ในระบบเครือข่ายคอมพิวเตอร์'},
+  {no:15,q:'ระบบเลขฐานในคอมพิวเตอร์มีกี่ระบบหลัก?',a:'2 ระบบ',b:'3 ระบบ',c:'4 ระบบ',d:'5 ระบบ',ans:'C',exp:'ในระบบคอมพิวเตอร์มีการใช้เลขฐานอยู่ 4 ระบบ คือ เลขฐานสอง (Binary) เลขฐานแปด (Octal) เลขฐานสิบ (Decimal) และเลขฐานสิบหก (Hexadecimal)'},
+
+  // ส่วนที่ 2: การใช้งานออนไลน์ (เพิ่มเติม) ข้อ 16-20
+  {no:16,q:'การใช้คอมพิวเตอร์ในงานสารสนเทศขององค์กรขนาดกลางมักใช้คอมพิวเตอร์ประเภทใด?',a:'Palmtop Computer',b:'มินิคอมพิวเตอร์',c:'ซูเปอร์คอมพิวเตอร์',d:'Desktop Computer ส่วนตัว',ans:'B',exp:'มินิคอมพิวเตอร์ถูกนำมาใช้สำหรับประมวลผลในงานสารสนเทศขององค์การขนาดกลาง โดยมีบทบาทเป็น Server ให้บริการข้อมูลและการคำนวณแก่ Client'},
+  {no:17,q:'ระบบ ATM เชื่อมต่อกับฐานข้อมูลที่จัดการโดยคอมพิวเตอร์ประเภทใด?',a:'ไมโครคอมพิวเตอร์',b:'ซูเปอร์คอมพิวเตอร์',c:'เมนเฟรมคอมพิวเตอร์',d:'สถานีงานวิศวกรรม',ans:'C',exp:'ระบบเอทีเอ็ม (ATM) เป็นตัวอย่างของการใช้งานเมนเฟรมคอมพิวเตอร์ที่ต้องการระบบศูนย์กลางและกระจายการใช้งานไปเป็นจำนวนมาก โดยเชื่อมต่อกับฐานข้อมูลที่จัดการโดยเครื่องเมนเฟรม'},
+  {no:18,q:'ระบบความปลอดภัย (Security) ของเมนเฟรมคอมพิวเตอร์อยู่ในระดับใด?',a:'ต่ำมาก',b:'ปานกลาง',c:'สูง (High Security)',d:'ไม่มีระบบความปลอดภัย',ans:'C',exp:'เมนเฟรมคอมพิวเตอร์มีความปลอดภัยสูง (High Security) เพราะใช้เป็นศูนย์คอมพิวเตอร์หลักขององค์กรขนาดใหญ่ที่ต้องการความน่าเชื่อถือและความปลอดภัยของข้อมูลสูงสุด'},
+  {no:19,q:'งานใดต่อไปนี้เหมาะกับซูเปอร์คอมพิวเตอร์มากที่สุด?',a:'งานพิมพ์เอกสาร',b:'งานบัญชีบริษัทขนาดเล็ก',c:'งานประมวลผลภาพทางการแพทย์และงานเคมีเภสัชวิทยา',d:'งานออกแบบนามบัตร',ans:'C',exp:'ซูเปอร์คอมพิวเตอร์เหมาะกับงานที่ต้องการความเร็วสูงมาก เช่น งานประมวลผลภาพทางการแพทย์ งานด้านวิทยาศาสตร์ โดยเฉพาะทางด้านเคมีเภสัชวิทยา และงานวิศวกรรมการออกแบบ'},
+  {no:20,q:'เหตุใดสถานีงานวิศวกรรม (Workstation) จึงมีราคาแพงกว่าไมโครคอมพิวเตอร์?',a:'เพราะมีสีสวยงามกว่า',b:'เพราะต้องการบุคลากรที่ฝึกฝนมาเป็นพิเศษ มีซอฟต์แวร์เฉพาะทาง และมีประสิทธิภาพสูงกว่า',c:'เพราะผลิตน้อยชิ้น',d:'เพราะใช้ระบบปฏิบัติการ Windows',ans:'B',exp:'การซื้อสถานีงานวิศวกรรมซับซ้อนกว่าไมโครคอมพิวเตอร์ มีราคาแพงกว่ามาก ต้องการบุคลากรที่ฝึกฝนมาเป็นอย่างดี และมีซอฟต์แวร์เฉพาะทางสำหรับงานวิศวกรรมโดยเฉพาะ'},
+
+  // ส่วนที่ 3: Microsoft Word (เพิ่มเติม) ข้อ 21-35
+  {no:21,q:'แท็บ HOME ใน Microsoft Word 2013 ใช้สำหรับอะไร?',a:'กำหนดขนาดหน้ากระดาษ',b:'การจัดรูปแบบข้อความ ย่อหน้า และคลิปบอร์ด',c:'การแทรกรูปภาพ',d:'การตรวจสอบการสะกดคำ',ans:'B',exp:'แท็บ Home ใน Microsoft Word 2013 ใช้สำหรับงานพื้นฐานด้านการจัดรูปแบบข้อความ เช่น ฟอนต์ ขนาดตัวอักษร สีตัวอักษร การจัดย่อหน้า และการใช้งานคลิปบอร์ด'},
+  {no:22,q:'แท็บ REVIEW ใน Microsoft Word 2013 มีฟีเจอร์สำคัญใด?',a:'การแทรกตาราง',b:'การตรวจสอบการสะกดคำ (Spelling & Grammar) และ Track Changes',c:'การกำหนดขนาดหน้ากระดาษ',d:'การแทรกรูปภาพ',ans:'B',exp:'แท็บ Review ใน Word 2013 มีฟีเจอร์สำคัญ เช่น Spelling & Grammar สำหรับตรวจสอบการสะกดคำและไวยากรณ์ และ Track Changes สำหรับติดตามการเปลี่ยนแปลงในเอกสาร'},
+  {no:23,q:'ฟีเจอร์ Mail Merge ใน Word 2013 ใช้ทำอะไร?',a:'ส่งอีเมลหากัน',b:'รวมเอกสารหลายฉบับเป็นฉบับเดียว',c:'สร้างจดหมายเวียนโดยรวมข้อมูลจากฐานข้อมูลเข้ากับแบบจดหมาย',d:'แปลงไฟล์ Word เป็น PDF',ans:'C',exp:'Mail Merge (จดหมายเวียน) ใน Word ใช้สร้างจดหมายหรือเอกสารจำนวนมากพร้อมกัน โดยรวมข้อมูลจากฐานข้อมูล (เช่น Excel) เข้ากับแบบจดหมายที่กำหนดไว้'},
+  {no:24,q:'การใช้คีย์ลัด Ctrl+Z ใน Microsoft Word ทำอะไร?',a:'ย่อขนาดเอกสาร',b:'ยกเลิกการกระทำล่าสุด (Undo)',c:'ค้นหาและแทนที่',d:'บันทึกเอกสาร',ans:'B',exp:'Ctrl+Z เป็นคีย์ลัดสำหรับ Undo (ยกเลิกการกระทำล่าสุด) ใน Microsoft Word ช่วยให้ผู้ใช้สามารถย้อนกลับการเปลี่ยนแปลงที่เพิ่งทำไปได้'},
+  {no:25,q:'การใช้คีย์ลัด Ctrl+C ใน Microsoft Word ทำอะไร?',a:'ตัดข้อความ',b:'วางข้อความ',c:'คัดลอกข้อความ',d:'ค้นหาข้อความ',ans:'C',exp:'Ctrl+C เป็นคีย์ลัดสำหรับ Copy (คัดลอก) ใน Microsoft Word ส่วน Ctrl+X ใช้ Cut Ctrl+V ใช้ Paste และ Ctrl+F ใช้ Find'},
+  {no:26,q:'แท็บ VIEW ใน Microsoft Word 2013 ใช้ทำอะไร?',a:'จัดรูปแบบตัวอักษร',b:'ควบคุมมุมมองการแสดงผลเอกสาร เช่น Print Layout, Read Mode, Web Layout',c:'แทรกรูปภาพ',d:'ตรวจสอบไวยากรณ์',ans:'B',exp:'แท็บ View ใน Word 2013 ใช้ควบคุมมุมมองการแสดงผลเอกสาร เช่น Print Layout, Read Mode, Web Layout, Outline และการซ่อน/แสดง Ruler'},
+  {no:27,q:'การบันทึกไฟล์ Word ในรูปแบบ PDF ทำได้อย่างไร?',a:'ต้องติดตั้งโปรแกรมแปลงไฟล์เพิ่มเติม',b:'ไปที่ File > Save As แล้วเลือก PDF ในรูปแบบไฟล์',c:'ไม่สามารถทำได้ใน Word',d:'ต้องส่งออกผ่าน Internet เท่านั้น',ans:'B',exp:'ใน Word 2013 สามารถบันทึกเป็น PDF ได้โดยไปที่ File > Save As แล้วเลือกประเภทไฟล์เป็น PDF ซึ่งสะดวกมากไม่ต้องใช้โปรแกรมเพิ่มเติม'},
+  {no:28,q:'Quick Access Toolbar ใน Microsoft Word คืออะไร?',a:'แถบเมนูหลักของโปรแกรม',b:'แถบเครื่องมือที่ผู้ใช้กำหนดเองสำหรับคำสั่งที่ใช้บ่อย',c:'แถบแสดงสถานะเอกสาร',d:'แถบ Ribbon หลัก',ans:'B',exp:'Quick Access Toolbar คือแถบเครื่องมือขนาดเล็กที่อยู่บนสุดของหน้าต่าง ผู้ใช้สามารถกำหนดเองเพื่อเพิ่มคำสั่งที่ใช้บ่อย เช่น Save, Undo, Redo'},
+  {no:29,q:'ฟีเจอร์ AutoCorrect ใน Word 2013 ทำหน้าที่อะไร?',a:'แปลภาษาอัตโนมัติ',b:'แก้ไขคำสะกดผิดและข้อผิดพลาดทั่วไปโดยอัตโนมัติขณะพิมพ์',c:'บันทึกเอกสารอัตโนมัติ',d:'สร้างสารบัญอัตโนมัติ',ans:'B',exp:'AutoCorrect ใน Word ทำหน้าที่แก้ไขคำสะกดผิดและข้อผิดพลาดทั่วไปโดยอัตโนมัติขณะพิมพ์ เช่น แก้ไขตัวอักษรพิมพ์ใหญ่ที่ต้นประโยค หรือแทนที่คำย่อด้วยคำเต็ม'},
+  {no:30,q:'ใน Word 2013 การใช้ Styles มีประโยชน์อย่างไร?',a:'ช่วยเปลี่ยนสีหน้ากระดาษ',b:'ช่วยกำหนดรูปแบบตัวอักษรและย่อหน้าได้อย่างสม่ำเสมอและรวดเร็ว',c:'ช่วยแทรกรูปภาพอัตโนมัติ',d:'ช่วยส่งอีเมล',ans:'B',exp:'Styles ใน Word ช่วยกำหนดรูปแบบตัวอักษรและย่อหน้า เช่น Heading 1, Heading 2, Normal ได้อย่างสม่ำเสมอทั่วทั้งเอกสาร และยังช่วยในการสร้าง Table of Contents อัตโนมัติได้ด้วย'},
+  {no:31,q:'การกด Ctrl+P ใน Microsoft Word ทำอะไร?',a:'วางข้อความ (Paste)',b:'บันทึกไฟล์',c:'เปิดหน้าต่างสำหรับพิมพ์เอกสาร (Print)',d:'สร้างเอกสารใหม่',ans:'C',exp:'Ctrl+P เป็นคีย์ลัดสำหรับเปิดหน้าต่าง Print (พิมพ์เอกสาร) ใน Microsoft Word และโปรแกรม Office อื่นๆ'},
+  {no:32,q:'ฟีเจอร์ Track Changes ใน Word 2013 ใช้ทำอะไร?',a:'เปลี่ยนธีมสีของเอกสาร',b:'ติดตามและแสดงการเปลี่ยนแปลงที่เกิดขึ้นในเอกสาร เพื่อให้ผู้อื่นตรวจสอบได้',c:'แทรกรูปภาพในเอกสาร',d:'สร้างสารบัญอัตโนมัติ',ans:'B',exp:'Track Changes ใน Word ใช้ติดตามและแสดงการเปลี่ยนแปลงทุกอย่างที่เกิดขึ้นในเอกสาร เช่น การเพิ่ม ลบ หรือแก้ไขข้อความ มีประโยชน์มากเมื่อมีหลายคนร่วมแก้ไขเอกสาร'},
+  {no:33,q:'ใน Word 2013 การสร้าง Table of Contents (สารบัญ) อัตโนมัติต้องทำอย่างไรก่อน?',a:'พิมพ์รายการสารบัญเองทั้งหมด',b:'กำหนด Heading Styles ให้กับหัวข้อในเอกสารก่อน',c:'ส่งออกไฟล์เป็น PDF ก่อน',d:'บันทึกไฟล์เป็น .txt ก่อน',ans:'B',exp:'การสร้าง Table of Contents อัตโนมัติใน Word ต้องกำหนด Heading Styles (เช่น Heading 1, Heading 2) ให้กับหัวข้อต่างๆ ในเอกสารก่อน จากนั้น Word จะสร้างสารบัญจาก Headings เหล่านั้นโดยอัตโนมัติ'},
+  {no:34,q:'Word Wrap ใน Microsoft Word หมายถึงอะไร?',a:'การพับกระดาษ',b:'การตัดบรรทัดอัตโนมัติเมื่อข้อความถึงขอบกระดาษ',c:'การห่อไฟล์',d:'การเปลี่ยนทิศทางตัวอักษร',ans:'B',exp:'Word Wrap คือคุณสมบัติที่ตัดบรรทัดอัตโนมัติเมื่อข้อความถึงขอบกระดาษ โดยไม่ต้องกด Enter ผู้ใช้ไม่ต้องกังวลเรื่องการขึ้นบรรทัดใหม่ด้วยตนเอง'},
+  {no:35,q:'ใน Word 2013 คีย์ลัด Ctrl+A ทำอะไร?',a:'บันทึกเอกสาร',b:'เปิดเอกสารใหม่',c:'เลือกข้อความทั้งหมดในเอกสาร',d:'จัดตำแหน่งข้อความ',ans:'C',exp:'Ctrl+A ใน Microsoft Word ใช้เลือกข้อความทั้งหมดในเอกสาร (Select All) ซึ่งมีประโยชน์เมื่อต้องการจัดรูปแบบหรือคัดลอกข้อมูลทั้งหมดพร้อมกัน'},
+
+  // ส่วนที่ 4: Microsoft Excel (เพิ่มเติม) ข้อ 36-43
+  {no:36,q:'ใน Excel ฟังก์ชัน MIN ใช้ทำอะไร?',a:'หาค่าเฉลี่ย',b:'รวมผลบวก',c:'หาค่าต่ำสุดของตัวเลขในช่วงที่กำหนด',d:'นับจำนวนเซลล์',ans:'C',exp:'ฟังก์ชัน MIN ใน Excel ใช้หาค่าต่ำสุดของตัวเลขในช่วงเซลล์ที่กำหนด เช่น =MIN(A1:A10) จะหาค่าต่ำสุดจากข้อมูลในเซลล์ A1 ถึง A10'},
+  {no:37,q:'ใน Excel ฟังก์ชัน COUNT ใช้ทำอะไร?',a:'รวมผลบวก',b:'นับจำนวนเซลล์ที่มีตัวเลขในช่วงที่กำหนด',c:'หาค่าเฉลี่ย',d:'หาค่าสูงสุด',ans:'B',exp:'ฟังก์ชัน COUNT ใน Excel ใช้นับจำนวนเซลล์ที่มีตัวเลขในช่วงที่กำหนด เช่น =COUNT(A1:A10) จะนับเซลล์ที่มีค่าเป็นตัวเลขจาก A1 ถึง A10'},
+  {no:38,q:'ใน Excel Workbook คืออะไร?',a:'เซลล์เดียวในตาราง',b:'แถวเดียวในตาราง',c:'ไฟล์ Excel ทั้งหมดที่ประกอบด้วย Sheet หลายแผ่น',d:'คอลัมน์เดียวในตาราง',ans:'C',exp:'Workbook คือไฟล์ Excel ทั้งหมด ซึ่งสามารถประกอบด้วย Sheet (แผ่นงาน) ได้หลายแผ่น แต่ละ Sheet มีตารางข้อมูลของตัวเอง'},
+  {no:39,q:'ในการอ้างอิงเซลล์แบบ Absolute Reference ใน Excel ใช้สัญลักษณ์ใด?',a:'& (แอมเปอร์แซนด์)',b:'# (ชาร์ป)',c:'$ (ดอลลาร์) เช่น $A$1',d:'@ (แอท)',ans:'C',exp:'Absolute Reference ใน Excel ใช้เครื่องหมาย $ (ดอลลาร์) นำหน้าชื่อคอลัมน์และ/หรือหมายเลขแถว เช่น $A$1 เพื่อล็อคตำแหน่งเซลล์ไม่ให้เปลี่ยนเมื่อคัดลอกสูตร'},
+  {no:40,q:'ฟังก์ชัน IF ใน Excel ใช้ทำอะไร?',a:'นับจำนวนเซลล์',b:'ทดสอบเงื่อนไขและแสดงผลลัพธ์ที่แตกต่างกันตามเงื่อนไข',c:'รวมผลบวก',d:'หาค่าสูงสุด',ans:'B',exp:'ฟังก์ชัน IF ใน Excel ใช้ทดสอบเงื่อนไขและแสดงผลลัพธ์ที่แตกต่างกัน เช่น =IF(A1>60,"ผ่าน","ไม่ผ่าน") จะแสดง "ผ่าน" ถ้า A1 มากกว่า 60 และ "ไม่ผ่าน" ถ้าน้อยกว่าหรือเท่ากับ 60'},
+  {no:41,q:'ใน Excel การแช่แข็งแถว (Freeze Panes) มีประโยชน์อย่างไร?',a:'ป้องกันไม่ให้แก้ไขข้อมูล',b:'ทำให้แถวหัวตารางแสดงอยู่เสมอแม้เลื่อนดูข้อมูลด้านล่าง',c:'เปลี่ยนสีพื้นหลังเซลล์',d:'ล็อคสูตรคำนวณ',ans:'B',exp:'การแช่แข็งแถว (Freeze Panes) ใน Excel ทำให้แถวหัวตาราง (Header Row) แสดงอยู่เสมอแม้เลื่อนดูข้อมูลจำนวนมากด้านล่าง ช่วยให้ทราบว่าข้อมูลในแต่ละคอลัมน์คืออะไร'},
+  {no:42,q:'ใน Excel ประเภทแผนภูมิ (Chart) แบบ Pie Chart เหมาะกับข้อมูลประเภทใด?',a:'ข้อมูลที่ต้องการเปรียบเทียบแนวโน้มตามเวลา',b:'ข้อมูลที่ต้องการแสดงสัดส่วนของแต่ละส่วนเทียบกับทั้งหมด',c:'ข้อมูลที่มีหลายตัวแปรในแกน X และ Y',d:'ข้อมูลทางสถิติที่ต้องการดูการกระจาย',ans:'B',exp:'Pie Chart (แผนภูมิวงกลม) เหมาะกับข้อมูลที่ต้องการแสดงสัดส่วนของแต่ละส่วนเทียบกับทั้งหมด เช่น ส่วนแบ่งการตลาด หรือสัดส่วนค่าใช้จ่ายต่างๆ'},
+  {no:43,q:'ฟังก์ชัน VLOOKUP ใน Excel ใช้ทำอะไร?',a:'หาค่าเฉลี่ย',b:'ค้นหาข้อมูลในตารางแนวตั้งและดึงค่าที่ต้องการมาแสดง',c:'นับจำนวนเซลล์',d:'รวมผลบวกตามเงื่อนไข',ans:'B',exp:'VLOOKUP ใน Excel ใช้ค้นหาข้อมูลในคอลัมน์แรกของตารางแนวตั้ง แล้วดึงค่าจากคอลัมน์ที่กำหนดมาแสดง เป็นฟังก์ชันที่ใช้บ่อยมากในงานข้อมูล'},
+
+  // ส่วนที่ 5: Microsoft PowerPoint (เพิ่มเติม) ข้อ 44-50
+  {no:44,q:'ใน PowerPoint Slide Master คืออะไร?',a:'สไลด์แรกของงานนำเสนอ',b:'แม่แบบหลักที่ควบคุมรูปแบบ สี ฟอนต์ และเลย์เอาต์ของสไลด์ทั้งหมด',c:'สไลด์สรุปท้ายการนำเสนอ',d:'ไฟล์สำรองของงานนำเสนอ',ans:'B',exp:'Slide Master คือแม่แบบหลักที่ควบคุมรูปแบบ สี ฟอนต์ และ Layout ของสไลด์ทั้งหมดในงานนำเสนอ การแก้ไข Slide Master จะมีผลกับทุกสไลด์พร้อมกัน'},
+  {no:45,q:'ใน PowerPoint Notes Pane ใช้ทำอะไร?',a:'แสดงรายชื่อผู้ร่วมประชุม',b:'บันทึกบันทึกย่อหรือสคริปต์ที่ผู้นำเสนอต้องการใช้ประกอบการนำเสนอ',c:'แสดงจำนวนสไลด์ทั้งหมด',d:'กำหนดเวลาการนำเสนอแต่ละสไลด์',ans:'B',exp:'Notes Pane (บานหน้าต่างบันทึกย่อ) ใน PowerPoint ใช้บันทึกบันทึกย่อหรือสคริปต์ที่ผู้นำเสนอต้องการใช้ประกอบการนำเสนอ ซึ่งผู้ชมจะไม่เห็นระหว่าง Slide Show'},
+  {no:46,q:'ใน PowerPoint การกำหนด Rehearse Timings มีประโยชน์อย่างไร?',a:'เพิ่มเสียงประกอบสไลด์',b:'บันทึกเวลาที่ใช้ในแต่ละสไลด์เพื่อฝึกซ้อมและตั้งเวลาเปลี่ยนสไลด์อัตโนมัติ',c:'เปลี่ยนธีมสีสไลด์',d:'สร้างตารางเนื้อหา',ans:'B',exp:'Rehearse Timings ใน PowerPoint ใช้บันทึกเวลาที่ผู้นำเสนอใช้ในแต่ละสไลด์ระหว่างการฝึกซ้อม จากนั้นสามารถตั้งให้สไลด์เปลี่ยนอัตโนมัติตามเวลาที่บันทึกไว้ได้'},
+  {no:47,q:'ไฟล์ PowerPoint ที่บันทึกในรูปแบบ .pptx แตกต่างจาก .ppsx อย่างไร?',a:'.pptx เปิดได้เฉพาะ Windows ส่วน .ppsx เปิดได้ทุกระบบ',b:'.ppsx เป็นรูปแบบที่เปิดขึ้นมาเป็น Slide Show โดยตรงโดยไม่ต้องแก้ไข',c:'.pptx มีขนาดไฟล์ใหญ่กว่า .ppsx เสมอ',d:'.ppsx ไม่รองรับ Animation',ans:'B',exp:'.ppsx หรือ PowerPoint Show คือรูปแบบไฟล์ที่เมื่อเปิดขึ้นมาจะเข้าสู่โหมด Slide Show โดยตรง ไม่สามารถแก้ไขได้ เหมาะสำหรับแจกไฟล์เพื่อนำเสนอโดยตรง'},
+  {no:48,q:'ใน PowerPoint SmartArt ใช้ทำอะไร?',a:'เพิ่มเสียงประกอบ',b:'สร้างไดอะแกรม แผนผัง และกราฟิกเพื่อแสดงข้อมูลในรูปแบบที่สวยงาม',c:'แทรกวิดีโอ',d:'กำหนดสีพื้นหลัง',ans:'B',exp:'SmartArt ใน PowerPoint ใช้สร้างไดอะแกรม แผนผัง และกราฟิกต่างๆ เช่น แผนผังองค์กร วัฏจักร กระบวนการ เพื่อแสดงข้อมูลในรูปแบบที่เข้าใจง่ายและสวยงาม'},
+  {no:49,q:'ใน PowerPoint การใช้ Section มีประโยชน์อย่างไร?',a:'เพิ่มเอฟเฟกต์เสียง',b:'จัดกลุ่มสไลด์เป็นหมวดหมู่เพื่อให้ง่ายต่อการจัดการ',c:'กำหนดรหัสผ่านไฟล์',d:'แปลงสไลด์เป็นรูปภาพ',ans:'B',exp:'Section ใน PowerPoint ใช้จัดกลุ่มสไลด์เป็นหมวดหมู่ ทำให้ง่ายต่อการจัดการและนำทางในงานนำเสนอขนาดใหญ่ที่มีสไลด์จำนวนมาก'},
+  {no:50,q:'ใน PowerPoint 2013 มีฟีเจอร์ใหม่ที่ช่วยให้ผู้นำเสนอเห็นสไลด์ถัดไปและบันทึกย่อบนหน้าจอของตนเองได้คืออะไร?',a:'Slide Master',b:'Presenter View',c:'Outline View',d:'Reading View',ans:'B',exp:'Presenter View ใน PowerPoint 2013 ช่วยให้ผู้นำเสนอเห็นสไลด์ปัจจุบัน สไลด์ถัดไป บันทึกย่อ และตัวนับเวลาบนจอของตนเอง ขณะที่ผู้ชมเห็นเพียงสไลด์ปัจจุบันบนหน้าจอหลัก'},
+];
+
+const sections = [
+  {title:'ส่วนที่ 1',subtitle:'ความรู้พื้นฐานเกี่ยวกับคอมพิวเตอร์ (เพิ่มเติม)',icon:'💻',range:[1,15]},
+  {title:'ส่วนที่ 2',subtitle:'การใช้งานคอมพิวเตอร์ในองค์กร',icon:'🌐',range:[16,20]},
+  {title:'ส่วนที่ 3',subtitle:'Microsoft Word (เพิ่มเติม)',icon:'📝',range:[21,35]},
+  {title:'ส่วนที่ 4',subtitle:'Microsoft Excel (เพิ่มเติม)',icon:'📊',range:[36,43]},
+  {title:'ส่วนที่ 5',subtitle:'Microsoft PowerPoint (เพิ่มเติม)',icon:'📽️',range:[44,50]},
+];
+
+const userAnswers = {};
+let submitted = false;
+
+function render() {
+  const c = document.getElementById('qContainer');
+  c.innerHTML = '';
+  sections.forEach(sec => {
+    const secQs = questions.filter(q => q.no >= sec.range[0] && q.no <= sec.range[1]);
+    const h = document.createElement('div');
+    h.className = 'sec-hdr';
+    h.innerHTML = `<span class="si2">${sec.icon}</span><span><strong>${sec.title}:</strong> ${sec.subtitle}</span><span class="sc">${secQs.length} ข้อ</span>`;
+    c.appendChild(h);
+    secQs.forEach(q => c.appendChild(buildCard(q)));
+  });
+  buildAK();
+}
+
+function buildCard(q) {
+  const card = document.createElement('div');
+  card.className = 'qcard';
+  card.id = `card-${q.no}`;
+  const ua = userAnswers[q.no];
+  if (submitted && ua) card.classList.add(ua === q.ans ? 'ac' : 'aw');
+  const letters = ['A','B','C','D'];
+  const keys = ['a','b','c','d'];
+  const st = submitted && ua ? (ua === q.ans ? '✅' : '❌') : (ua ? '🔵' : '');
+  card.innerHTML = `
+    <div class="qhdr">
+      <span class="qnum">ข้อ ${q.no}</span>
+      <span class="qtxt">${q.q}</span>
+      <span class="qst">${st}</span>
+    </div>
+    <div class="choices">
+      ${letters.map((L,i) => {
+        let cls = 'choice';
+        if (!submitted) { if (ua === L) cls += ' selected'; }
+        else { if (L === q.ans) cls += ' correct-answer'; else if (ua === L && ua !== q.ans) cls += ' wrong'; }
+        if (submitted) cls += ' disabled';
+        return `<div class="${cls}" onclick="pick(${q.no},'${L}')"><span class="cl">${L}</span><span class="ct">${q[keys[i]]}</span></div>`;
+      }).join('')}
+    </div>
+    <div class="exp ${submitted ? 'show' : ''}" id="exp-${q.no}">
+      <div class="exp-ans">🎯 เฉลย: ข้อ ${q.ans} — ${q[q.ans.toLowerCase()]}</div>
+      <div class="exp-body">${q.exp}</div>
+    </div>`;
+  return card;
+}
+
+function pick(no, L) {
+  if (submitted) return;
+  userAnswers[no] = L;
+  updateProg();
+  const card = document.getElementById(`card-${no}`);
+  card.querySelectorAll('.choice').forEach((el,i) => el.classList.toggle('selected', ['A','B','C','D'][i] === L));
+  const s = card.querySelector('.qst');
+  if (s) s.textContent = '🔵';
+}
+
+function updateProg() {
+  const n = Object.keys(userAnswers).length;
+  document.getElementById('aCnt').textContent = n;
+  const p = Math.round(n/50*100);
+  document.getElementById('pFill').style.width = p + '%';
+  document.getElementById('pTxt').textContent = `ตอบแล้ว ${n} จาก 50 ข้อ`;
+  document.getElementById('pPct').textContent = p + '%';
+}
+
+function submitAll() {
+  const n = Object.keys(userAnswers).length;
+  if (n < 50 && !confirm(`คุณตอบแล้ว ${n}/50 ข้อ ยังมีที่ยังไม่ได้ตอบ ต้องการส่งคำตอบเลยหรือไม่?`)) return;
+  submitted = true;
+  render();
+  showResult();
+}
+
+function showResult() {
+  let c = 0;
+  questions.forEach(q => { if (userAnswers[q.no] === q.ans) c++; });
+  const p = Math.round(c/50*100);
+  document.getElementById('rbC').textContent = c;
+  document.getElementById('rbW').textContent = Object.keys(userAnswers).length - c;
+  document.getElementById('rScore').textContent = `${c}/50`;
+  const sc = document.getElementById('rScore');
+  sc.className = 'rs';
+  let em='🎉', sub='', cl='';
+  if (p>=80){em='🏆';sub='ยอดเยี่ยม! ผ่านเกณฑ์ด้วยคะแนนสูง';cl='ex';}
+  else if(p>=60){em='👍';sub='ผ่านเกณฑ์ ดีมาก!';cl='go';}
+  else if(p>=40){em='📚';sub='พอใช้ได้ ควรทบทวนเพิ่มเติม';cl='fa';}
+  else{em='💪';sub='ต้องศึกษาเพิ่มเติม ลองทำใหม่อีกครั้ง';cl='po';}
+  sc.classList.add(cl);
+  document.getElementById('rEmoji').textContent = em;
+  document.getElementById('rSub').textContent = `${p}% — ${sub}`;
+  document.getElementById('rOverlay').classList.add('show');
+}
+
+function closeResult() { document.getElementById('rOverlay').classList.remove('show'); window.scrollTo({top:0,behavior:'smooth'}); }
+
+function showAllAnswers() { submitted = true; render(); }
+
+function resetAll() {
+  if (!confirm('ต้องการเริ่มทำแบบทดสอบใหม่ใช่หรือไม่?')) return;
+  Object.keys(userAnswers).forEach(k => delete userAnswers[k]);
+  submitted = false;
+  document.getElementById('rOverlay').classList.remove('show');
+  render(); updateProg();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function buildAK() {
+  const g = document.getElementById('akGrid');
+  g.innerHTML = '';
+  for (let i = 0; i < questions.length; i += 10) {
+    questions.slice(i, i+10).forEach(q => {
+      const cell = document.createElement('div');
+      cell.className = 'akc';
+      const ua = userAnswers[q.no];
+      if (submitted && ua) cell.classList.add(ua === q.ans ? 'uc' : 'uw');
+      cell.innerHTML = `<div class="akn">ข้อ ${q.no}</div><div class="aka">${q.ans}</div>` +
+        (submitted && ua && ua !== q.ans ? `<div style="font-size:11px;color:#dc2626">ตอบ:${ua}</div>` : '');
+      g.appendChild(cell);
+    });
+  }
+}
+
+render(); updateProg();
+</script>
+</body>
+</html>
